@@ -1,0 +1,101 @@
+name: Defect Report
+description: Report something that does not work as intended according to its specification
+title: "[DEFECT] "
+labels: ["defect"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a defect! Please fill out the information below to help us understand and fix the issue.
+        
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Brief description of what's broken
+      placeholder: "e.g., API returns 500 error when processing large payloads"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: current_behavior
+    attributes:
+      label: Current Behavior
+      description: What's happening?
+      placeholder: "Describe what is currently happening..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: What should happen according to spec/docs?
+      placeholder: "Describe what should happen according to the specification or documentation..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How to trigger the defect
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+      
+  - type: input
+    id: reference
+    attributes:
+      label: Reference
+      description: Link to spec/doc/previous ticket defining expected behavior
+      placeholder: "e.g., https://docs.pyck.ai/api/endpoints#create-user"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      description: Where does this occur?
+      options:
+        - Production
+        - Staging
+        - Development
+        - Other
+    validations:
+      required: true
+      
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Who/what is affected?
+      placeholder: "e.g., All users attempting to upload files larger than 10MB"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: proposed_fix
+    attributes:
+      label: Proposed Fix
+      description: Initial thoughts on solution (optional)
+      placeholder: "If you have ideas on how to fix this issue..."
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority (MoSCoW)
+      description: Priority for current milestone
+      options:
+        - Must Have
+        - Should Have
+        - Could Have
+        - Won't Have
+    validations:
+      required: true

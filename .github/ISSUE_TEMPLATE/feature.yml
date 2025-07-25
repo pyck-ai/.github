@@ -1,0 +1,104 @@
+name: Feature Request
+description: Request a new capability that does not exist already
+title: "[FEATURE] "
+labels: ["feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature! Please provide detailed information following our "What, Why, How" approach.
+        
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Brief description of new capability
+      placeholder: "e.g., Add bulk import functionality for user data"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: description
+    attributes:
+      label: Description (WHAT)
+      description: What needs to be built?
+      placeholder: "Clearly describe the new functionality..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: justification
+    attributes:
+      label: Justification (WHY)
+      description: Why is this needed? What business value does it provide?
+      placeholder: "Explain the business need and value..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution (HOW)
+      description: How will it be implemented?
+      placeholder: "Describe your proposed approach to implementing this feature..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Measurable success conditions
+      placeholder: |
+        - [ ] Users can upload CSV files up to 100MB
+        - [ ] System validates data format before import
+        - [ ] Progress indicator shows import status
+    validations:
+      required: true
+      
+  - type: textarea
+    id: impact_assessment
+    attributes:
+      label: Impact Assessment
+      description: Systems affected, resources needed
+      placeholder: |
+        - Affected systems: API, Database, UI
+        - Estimated effort: 2 weeks
+        - Required resources: Backend dev, Frontend dev, QA
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: documentation_requirements
+    attributes:
+      label: Documentation Requirements
+      description: What documentation needs to be created or updated?
+      options:
+        - label: API documentation needs update
+        - label: User guide needs update
+        - label: README needs update
+        - label: No documentation changes needed
+    validations:
+      required: true
+      
+  - type: input
+    id: parent_business_goal
+    attributes:
+      label: Parent Business Goal
+      description: Link to planning repo issue (optional)
+      placeholder: "e.g., pyck-ai/planning#42"
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority (MoSCoW)
+      description: Priority for current milestone
+      options:
+        - Must Have
+        - Should Have
+        - Could Have
+        - Won't Have
+    validations:
+      required: true

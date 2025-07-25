@@ -1,0 +1,80 @@
+name: Business Goal
+description: Define a business objective for the planning repository
+title: "[GOAL] "
+labels: ["business-goal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to define high-level business objectives that will be broken down into specific Features and Tasks.
+        This template is primarily for use in the planning repository.
+        
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Business objective description
+      placeholder: "e.g., Improve user onboarding experience to reduce churn by 20%"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: business_objective
+    attributes:
+      label: Business Objective
+      description: What business outcome are we targeting?
+      placeholder: "Describe the desired business outcome in detail..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: success_metrics
+    attributes:
+      label: Success Metrics
+      description: How do we measure achievement?
+      placeholder: |
+        - User activation rate increases from 60% to 80%
+        - Time to first value decreases from 10 minutes to 5 minutes
+        - Support tickets related to onboarding decrease by 50%
+    validations:
+      required: true
+      
+  - type: input
+    id: target_milestone
+    attributes:
+      label: Target Milestone
+      description: Quarter/iteration for completion
+      placeholder: "e.g., Q2 2024"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: stakeholders
+    attributes:
+      label: Stakeholders
+      description: Who cares about this objective?
+      placeholder: |
+        - Product: Jane Doe
+        - Engineering: John Smith
+        - Customer Success: Alice Johnson
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority (MoSCoW)
+      description: Priority for the target milestone
+      options:
+        - Must Have
+        - Should Have
+        - Could Have
+        - Won't Have
+    validations:
+      required: true
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## Child Issues
+        GitHub will automatically track and display child issues (Features, Tasks, Defects) that reference this Business Goal.

@@ -1,0 +1,88 @@
+name: Task
+description: Anything that isn't clearly a Defect or Feature (maintenance, investigations, refactoring, PoCs)
+title: "[TASK] "
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for maintenance, investigations, refactoring, or proof-of-concepts.
+        
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Brief description of work
+      placeholder: "e.g., Investigate database query performance issues"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: description
+    attributes:
+      label: Description (WHAT)
+      description: What needs to be done?
+      placeholder: "Clearly describe the task..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: justification
+    attributes:
+      label: Justification (WHY)
+      description: Why is this task necessary?
+      placeholder: "Explain why this work is needed..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: approach
+    attributes:
+      label: Approach (HOW)
+      description: How will it be accomplished?
+      placeholder: "Describe your approach to completing this task..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: definition_of_done
+    attributes:
+      label: Definition of Done
+      description: When is this complete?
+      placeholder: |
+        - [ ] Performance metrics collected
+        - [ ] Bottlenecks identified
+        - [ ] Recommendations documented
+    validations:
+      required: true
+      
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: What this blocks/is blocked by (optional)
+      placeholder: "e.g., Blocked by #123, Blocks deployment of feature X"
+    validations:
+      required: false
+      
+  - type: input
+    id: parent_business_goal
+    attributes:
+      label: Parent Business Goal
+      description: If applicable (optional)
+      placeholder: "e.g., pyck-ai/planning#42"
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority (MoSCoW)
+      description: Priority for current milestone
+      options:
+        - Must Have
+        - Should Have
+        - Could Have
+        - Won't Have
+    validations:
+      required: true

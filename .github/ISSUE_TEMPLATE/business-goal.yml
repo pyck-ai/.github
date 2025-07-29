@@ -27,18 +27,6 @@ body:
       
       
       
-  - type: dropdown
-    id: priority
-    attributes:
-      label: Priority (MoSCoW)
-      description: Priority for the target milestone
-      options:
-        - Must Have
-        - Should Have
-        - Could Have
-        - Won't Have
-    validations:
-      required: true
       
   - type: markdown
     attributes:

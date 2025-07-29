@@ -2,7 +2,7 @@
 
 ## Reporting Security Vulnerabilities
 
-We take the security of pyck.ai seriously. If you believe you have found a security vulnerability in any pyck.ai repository, please report it to us as described below.
+We take the security of pyck.ai seriously. If you believe you have found a security vulnerability in any pyck.ai repository, we kindly ask you to please report it to us as described below.
 
 ## How to Report a Vulnerability
 

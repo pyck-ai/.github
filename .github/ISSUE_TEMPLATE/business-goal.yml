@@ -7,23 +7,14 @@ body:
         Use this template to define high-level business objectives that will be broken down into specific Features and Tasks.
         This template is primarily for use in the planning repository.
         
-  - type: input
-    id: title
-    attributes:
-      label: Title
-      description: Business objective description
-      placeholder: "e.g., Improve user onboarding experience to reduce churn by 20%"
-    validations:
-      required: true
-      
-  - type: textarea
-    id: business_objective
-    attributes:
-      label: Business Objective
-      description: What business outcome are we targeting?
-      placeholder: "Describe the desired business outcome in detail..."
-    validations:
-      required: true
+- type: input
+  id: objective
+  attributes:
+    label: Business Goal
+    description: Briefly describe the objective (e.g., Reduce churn by 20%)
+    placeholder: "e.g., Improve onboarding to reduce churn by 20%"
+  validations:
+    required: true
       
   - type: textarea
     id: success_metrics

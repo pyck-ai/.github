@@ -1,7 +1,5 @@
 name: Feature Request
 description: Request a new capability that does not exist already
-title: "[FEATURE] "
-labels: ["feature"]
 body:
   - type: markdown
     attributes:

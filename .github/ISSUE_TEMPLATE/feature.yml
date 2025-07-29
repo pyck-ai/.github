@@ -34,10 +34,10 @@ body:
       required: true
       
   - type: textarea
-    id: proposed_solution
+    id: how
     attributes:
-      label: Proposed Solution (HOW)
-      description: How will it be implemented?
+      label: How?
+      description: How should it be implemented?
       placeholder: "Describe your proposed approach to implementing this feature..."
     validations:
       required: true

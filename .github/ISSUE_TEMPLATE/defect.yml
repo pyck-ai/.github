@@ -66,14 +66,6 @@ body:
     validations:
       required: true
       
-  - type: textarea
-    id: impact
-    attributes:
-      label: Impact
-      description: Who/what is affected?
-      placeholder: "e.g., All users attempting to upload files larger than 10MB"
-    validations:
-      required: true
       
   - type: textarea
     id: proposed_fix

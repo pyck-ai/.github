@@ -76,15 +76,3 @@ body:
     validations:
       required: false
       
-  - type: dropdown
-    id: priority
-    attributes:
-      label: Priority (MoSCoW)
-      description: Priority for current milestone
-      options:
-        - Must Have
-        - Should Have
-        - Could Have
-        - Won't Have
-    validations:
-      required: true

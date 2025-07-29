@@ -7,9 +7,9 @@ body:
         Thank you for reporting a defect! Please fill out the information below to help us understand and fix the issue.
         
   - type: input
-    id: title
+    id: description
     attributes:
-      label: Title
+      label: Description
       description: Brief description of what's broken
       placeholder: "e.g., API returns 500 error when processing large payloads"
     validations:

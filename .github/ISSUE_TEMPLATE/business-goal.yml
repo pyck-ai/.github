@@ -26,17 +26,6 @@ body:
     required: true
       
       
-  - type: textarea
-    id: stakeholders
-    attributes:
-      label: Stakeholders
-      description: Who cares about this objective?
-      placeholder: |
-        - Product: Jane Doe
-        - Engineering: John Smith
-        - Customer Success: Alice Johnson
-    validations:
-      required: true
       
   - type: dropdown
     id: priority

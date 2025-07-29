@@ -1,7 +1,5 @@
 name: Defect Report
 description: Report something that does not work as intended according to its specification
-title: "[DEFECT] "
-labels: ["defect"]
 body:
   - type: markdown
     attributes:

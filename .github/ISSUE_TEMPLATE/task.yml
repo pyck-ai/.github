@@ -47,12 +47,12 @@ body:
   - type: textarea
     id: definition_of_done
     attributes:
-      label: Definition of Done
-      description: When is this complete?
+      label: Definition of Done / Success Criteria
+      description: Specific, measurable conditions that indicate this task is complete
       placeholder: |
-        - [ ] Performance metrics collected
-        - [ ] Bottlenecks identified
-        - [ ] Recommendations documented
+        - [ ] Performance metrics collected and documented
+        - [ ] All major bottlenecks identified with evidence
+        - [ ] Actionable recommendations provided with priority ranking
     validations:
       required: true
       

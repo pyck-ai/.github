@@ -48,11 +48,11 @@ body:
     id: acceptance_criteria
     attributes:
       label: Acceptance Criteria
-      description: Measurable success conditions
+      description: User story format - what should be possible when this feature is complete?
       placeholder: |
-        - [ ] Users can upload CSV files up to 100MB
-        - [ ] System validates data format before import
-        - [ ] Progress indicator shows import status
+        - [ ] As a user, I can upload CSV files up to 100MB
+        - [ ] As a user, I can see validation errors if my data format is incorrect
+        - [ ] As a user, I can track the progress of my import operation
     validations:
       required: true
       

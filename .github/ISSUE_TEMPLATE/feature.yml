@@ -7,9 +7,9 @@ body:
         Thank you for suggesting a new feature! Please provide detailed information following our "What, Why, How" approach.
         
   - type: input
-    id: title
+    id: description
     attributes:
-      label: Title
+      label: Description
       description: Brief description of new capability
       placeholder: "e.g., Add bulk import functionality for user data"
     validations:

@@ -16,17 +16,14 @@ body:
   validations:
     required: true
       
-  - type: textarea
-    id: success_metrics
-    attributes:
-      label: Success Metrics
-      description: How do we measure achievement?
-      placeholder: |
-        - User activation rate increases from 60% to 80%
-        - Time to first value decreases from 10 minutes to 5 minutes
-        - Support tickets related to onboarding decrease by 50%
-    validations:
-      required: true
+- type: textarea
+  id: details
+  attributes:
+    label: Details & Success Metrics
+    description: What outcome do you want? How will you measure success? (List metrics)
+    placeholder: "Describe the outcome and add measurable success criteria..."
+  validations:
+    required: true
       
   - type: input
     id: target_milestone

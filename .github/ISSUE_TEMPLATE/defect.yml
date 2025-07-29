@@ -55,15 +55,14 @@ body:
       required: true
       
   - type: dropdown
-    id: environment
+    id: version
     attributes:
-      label: Environment
-      description: Where does this occur?
-      options:
-        - Production
-        - Staging
-        - Development
-        - Other
+      label: Version
+      description: Which version is affected? Please provide either a product version, git tag or commit id.
+      placeholder: |
+        v0.1
+        d34db33f
+        ...
     validations:
       required: true
       

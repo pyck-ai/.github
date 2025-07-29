@@ -28,8 +28,3 @@ body:
       
       
       
-  - type: markdown
-    attributes:
-      value: |
-        ## Child Issues
-        GitHub will automatically track and display child issues (Features, Tasks, Defects) that reference this Business Goal.

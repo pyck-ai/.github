@@ -16,9 +16,9 @@ body:
       required: true
       
   - type: textarea
-    id: description
+    id: what
     attributes:
-      label: Description (WHAT)
+      label: What?
       description: What needs to be built?
       placeholder: "Clearly describe the new functionality..."
     validations:

@@ -25,14 +25,6 @@ body:
   validations:
     required: true
       
-  - type: input
-    id: target_milestone
-    attributes:
-      label: Target Milestone
-      description: Quarter/iteration for completion
-      placeholder: "e.g., Q2 2024"
-    validations:
-      required: true
       
   - type: textarea
     id: stakeholders

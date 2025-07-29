@@ -25,11 +25,11 @@ body:
       required: true
       
   - type: textarea
-    id: justification
+    id: why
     attributes:
-      label: Justification (WHY)
-      description: Why is this needed? What business value does it provide?
-      placeholder: "Explain the business need and value..."
+      label: Why?
+      description: Why is this needed? What value does it provide?
+      placeholder: "Explain the need and value..."
     validations:
       required: true
       

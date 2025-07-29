@@ -1,7 +1,5 @@
 name: Business Goal
 description: Define a business objective for the planning repository
-title: "[GOAL] "
-labels: ["business-goal"]
 body:
   - type: markdown
     attributes:

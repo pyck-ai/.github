@@ -2,7 +2,9 @@
 
 ## Reporting Security Vulnerabilities
 
-We take the security of pyck.ai seriously. If you believe you have found a security vulnerability in any pyck.ai repository, we kindly ask you to please report it to us as described below.
+We take the security of pyck.ai seriously. If you believe you have found a
+security vulnerability in any pyck.ai repository, we kindly ask you to please
+report it to us as described below.
 
 ## How to Report a Vulnerability
 
@@ -12,7 +14,8 @@ Instead, please report them via email to:
 
 📧 **security@pyck.ai**
 
-You should receive an acknowledgment within 72 hours. If for some reason you do not, please follow up via email to ensure we received your original message.
+You should receive an acknowledgment within 72 hours. If for some reason you do
+not, please follow up via email to ensure we received your original message.
 
 Please include the following information in your report:
 - Type of issue (e.g., buffer overflow, SQL injection, cross-site scripting, etc.)
@@ -36,4 +39,5 @@ We follow a coordinated disclosure policy:
 
 ## Comments on this Policy
 
-If you have suggestions on how this process could be improved, please submit a pull request or email security@pyck.ai.
+If you have suggestions on how this process could be improved, please submit a
+pull request or email security@pyck.ai.

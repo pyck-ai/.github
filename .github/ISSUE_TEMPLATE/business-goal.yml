@@ -1,30 +1,64 @@
 name: Business Goal
-description: Define a business objective for the planning repository
+description: |-
+  Create a business goal to guide what we build and where we spend our time
 body:
   - type: markdown
     attributes:
-      value: |
-        Use this template to define high-level business objectives that will be broken down into specific Features and Tasks.
-        This template is primarily for use in the planning repository.
-        
-- type: input
-  id: objective
-  attributes:
-    label: Business Goal
-    description: Briefly describe the objective (e.g., Reduce churn by 20%)
-    placeholder: "e.g., Improve onboarding to reduce churn by 20%"
-  validations:
-    required: true
-      
-- type: textarea
-  id: details
-  attributes:
-    label: Details & Success Metrics
-    description: What outcome do you want? How will you measure success? (List metrics)
-    placeholder: "Describe the outcome and add measurable success criteria..."
-  validations:
-    required: true
-      
-      
-      
-      
+      value: |-
+        A business goal describes what we want to achieve in the medium to
+        long term. It helps our team decide what features to build and what
+        work to prioritize.
+
+        Each goal will be broken down into smaller Features and Tasks in
+        separate issues. This makes it easier to turn big ideas into
+        actual work.
+
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: |-
+        Please write one sentence that describes what you want to achieve
+      placeholder: |-
+        Reduce warehouse picking errors by 30% through improved inventory tracking
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Background & Context
+      description: |-
+        Please explain the problem and why it matters. Include data, research,
+        or links to support your points. Add background information about how
+        this fits with pyck's strategy.
+      placeholder: |-
+        Picking error rates increased from 2.1% to 3.8% in Q1 2024 (WMS
+        analytics dashboard). Most errors occur during multi-item picks in
+        high-density storage areas - 65% of errors happen in zones where
+        SKU density exceeds 500 items per aisle.
+
+        According to Material Handling Institute's 2024 Warehouse Efficiency
+        Report (https://example.com/research/warehouse-productivity-study),
+        facilities with error rates above 3% experience 40% higher labor
+        costs due to returns processing and re-picks.
+
+        This directly impacts our client retention goals and $1.2M contract
+        renewals at risk in Q3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: Success Criteria
+      description: |-
+        Please list what success looks like. Include specific numbers and
+        milestones that show when you've achieved the goal.
+      placeholder: |-
+        - [ ] Reduce picking error rate from 3.8% to 2.5%
+        - [ ] Decrease average pick time from 15 to 10 seconds
+        - [ ] Improve inventory accuracy from 97.2% to 99.5% in high-density zones
+        - [ ] Reduce mispick-related customer complaints by 60%
+    validations:
+      required: true

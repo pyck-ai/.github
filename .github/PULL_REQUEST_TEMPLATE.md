@@ -1,36 +1,39 @@
-## Summary
+<!-- ---------------------------------------------------------------------------
+Please briefly describe what your Pull Request changes or adds. If your pull
+request is related to any GitHub issues, please link them below, like this:
 
-Please write one sentence that describes what this pull request changes or adds.
+Closes: #123, #456
 
-## Related Issues
+In case you have created this PR with a proper commit message following our
+commit guidelines, GitHub should have automatically added the commit message
+above this placeholder.
+---------------------------------------------------------------------------- -->
 
-Please link the issue this pull request addresses:
-Closes #(issue number)
+## PR Compliance
 
-## Type of Change
+**Please check all the boxes below, that apply to this pull request:**
 
-Please check all types that apply to this pull request:
+- [ ] Feature — *This PR adds new or improves existing functionality*
+- [ ] Defect — *This PR fixes something that was not working correctly*
 
-- [ ] Defect - fixes something that was broken or not working correctly
-- [ ] Feature - adds new functionality or improves existing features
-- [ ] Task - maintenance, documentation, refactoring, or organizational work
-- [ ] Breaking change - modifies existing API or changes how things work
+- [ ] Breaking change — *The changes in this PR are not backwards compatible.
 
-## Testing
+**Please confirm you have completed the following testing steps:**
 
-Please confirm you have completed the following testing steps:
+- [ ] I have tested the changes manually and they work as expected
+- [ ] I have added/updated tests that cover the changes in this PR
 
-- [ ] Tested the changes manually to verify they work as expected
-- [ ] Added unit tests to cover any new code or functionality
-- [ ] Verified overall test coverage has not decreased from the previous level
+**Please confirm you have updated documentation where needed:**
 
-## Documentation
-
-Please confirm you have updated documentation where needed:
-
-- [ ] Updated API documentation for any GraphQL schema or endpoint changes
-- [ ] Updated user documentation for any feature changes or new functionality
+- [ ] I have updated the API documentation
+- [ ] I have Updated the user documentation
 
 ## Additional Information
 
-Please add any context, screenshots, or notes that will help reviewers understand and test your changes.
+<!-- ---------------------------------------------------------------------------
+Please add any additional context, screenshots, notes, or test data that will
+help reviewers better understand and test your changes below this placeholder.
+
+Add "N/A" if there is no additional information.
+---------------------------------------------------------------------------- -->
+N/A

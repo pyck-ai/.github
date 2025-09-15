@@ -1,10 +1,11 @@
 name: Feature
-description: |-
+type: Feature
+description: >-
   Request a new feature or improvement to existing functionality
 body:
   - type: markdown
     attributes:
-      value: |-
+      value: >-
         A feature describes new functionality or improvements to existing
         features. Use this template to request new capabilities for the
         warehouse management system.
@@ -12,30 +13,22 @@ body:
         Please provide clear details using the "What, Why, How" approach to
         help us understand and build what you need.
 
-  - type: input
-    id: summary
-    attributes:
-      label: Summary
-      description: |-
-        Please write one sentence that describes the new feature or improvement
-      placeholder: |-
-        Add individual serial number tracking to GraphQL API for inventory items
-    validations:
-      required: true
-
   - type: textarea
     id: what
     attributes:
       label: What?
-      description: |-
-        Please describe exactly what functionality needs to be built
+      description: >-
+        Please describe exactly what functionality should be added or changed.
       placeholder: |-
-        Add serial number tracking capabilities to the GraphQL API. Create a
-        new SerialNumber type that links to InventoryItem with a unique serial
-        number string. Update createInventoryItem mutation to optionally accept
-        serial numbers. Add new mutations: assignSerialNumber,
-        removeSerialNumber. Add serial number filtering to inventory queries
-        to find items by specific serial numbers.
+        Example:
+
+        Add a new SerialNumber type that links to InventoryItem with a unique
+        serial number string. Update createInventoryItem mutation to optionally
+        accept serial numbers. Add new mutations "assignSerialNumber",
+        "removeSerialNumber".
+
+        Add serial number filtering to inventory queries to find items by
+        specific serial numbers.
     validations:
       required: true
 
@@ -43,34 +36,19 @@ body:
     id: why
     attributes:
       label: Why?
-      description: |-
-        Please explain why this is needed and what value it provides
+      description: >-
+        Please explain why this this feature is needed.
       placeholder: |-
+        Example:
+
         Many warehouse customers need to track individual serial numbers for
         high-value items, electronics, or compliance requirements. Currently,
         they can only track quantities at the SKU level, which doesn't meet
         regulatory needs for industries like pharmaceuticals or electronics.
 
-        Serial number tracking would enable customers to trace individual
-        items through receiving, storage, picking, and shipping, supporting
-        warranty tracking, recalls, and compliance reporting.
-    validations:
-      required: true
-
-  - type: textarea
-    id: how
-    attributes:
-      label: How?
-      description: |-
-        Please describe how you think this feature should be implemented
-      placeholder: |-
-        Extend the existing GraphQL schema with a SerialNumber type containing
-        fields: id, serialNumber (unique string), inventoryItemId, status.
-        Add serial number array input to createInventoryItem mutation. Create
-        new mutations for managing serial numbers post-creation. Update the
-        InventoryItem type to include a serialNumbers field that returns
-        associated serial numbers. Add serial number filtering to existing
-        inventory queries.
+        Serial number tracking would enable customers to trace individual items
+        through receiving, storage, picking, and shipping, supporting warranty
+        tracking, recalls, and compliance reporting.
     validations:
       required: true
 
@@ -78,9 +56,12 @@ body:
     id: acceptance_criteria
     attributes:
       label: Acceptance Criteria
-      description: |-
-        Please list what should be possible when this feature is complete
+      description: >-
+        Please list which criteria must be fulfilled for this feature to be
+        considered complete.
       placeholder: |-
+        Example:
+
         - [ ] As a warehouse manager, I can create inventory items with serial numbers via GraphQL
         - [ ] As a warehouse manager, I can assign serial numbers to existing inventory items
         - [ ] As a warehouse manager, I can query inventory items by specific serial numbers
@@ -91,12 +72,33 @@ body:
       required: true
 
   - type: textarea
+    id: how
+    attributes:
+      label: How? (Optional)
+      description: >-
+        If you already have an idea, please describe how you think this feature
+        should be implemented.
+      placeholder: |-
+        Example:
+
+        Extend the existing GraphQL schema with a SerialNumber type containing
+        fields "id", "serialNumber" (unique string), "inventoryItemId", and
+        "status". Add serial number array input to createInventoryItem mutation.
+        Create new mutations for managing serial numbers post-creation. Update
+        the InventoryItem type to include a serialNumbers field that returns
+        associated serial numbers. Add serial number filtering to existing
+        inventory queries.
+
+  - type: textarea
     id: impact_assessment
     attributes:
       label: Impact Assessment (Optional)
-      description: |-
-        Please describe what systems and components will be affected technically
+      description: >-
+        If you can, please describe what systems, components and/or processes
+        will be affected by this change.
       placeholder: |-
+        Example:
+
         - Affected systems: GraphQL API, Database schema, existing inventory queries
         - Database changes: New serial_numbers table with unique constraints
         - API changes: New SerialNumber type, extended InventoryItem type

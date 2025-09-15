@@ -1,42 +1,34 @@
 name: Task
-description: |-
+type: Task
+description: >-
   Any work that doesn't fit as a feature or defect
 body:
   - type: markdown
     attributes:
-      value: |-
+      value: >-
         A task is any work that doesn't fit as a feature or defect. This
         includes maintenance, investigations, documentation, organizational
-        work, process improvements, research, setup tasks, or anything else
-        that needs to be tracked and completed.
+        work, process improvements, research, setup tasks, or anything else that
+        needs to be tracked and completed.
 
-        Please provide clear details using the "What, Why, How" approach to
-        help us understand and prioritize the work.
-
-  - type: input
-    id: summary
-    attributes:
-      label: Summary
-      description: |-
-        Please write one sentence that describes the work to be done
-      placeholder: |-
-        Create comprehensive API documentation for inventory movement workflows
-    validations:
-      required: true
+        Please provide clear details using the "What, Why, How" approach to help
+        us understand and prioritize the work.
 
   - type: textarea
     id: what
     attributes:
       label: What?
-      description: |-
+      description: >-
         Please describe exactly what work needs to be done
       placeholder: |-
-        Document all GraphQL mutations and queries related to inventory movements,
-        including createInventoryItemMovement, executeInventoryItemMovement, and
-        repositoryMovement operations. Create detailed examples showing how to
-        move items between locations, update quantities, and track movement
-        history. Include error handling scenarios and best practices for
-        warehouse operations.
+        Example:
+
+        Document all GraphQL mutations and queries related to inventory
+        movements, including createInventoryItemMovement,
+        executeInventoryItemMovement, and repositoryMovement operations. Create
+        detailed examples showing how to move items between locations, update
+        quantities, and track movement history. Include error handling scenarios
+        and best practices for warehouse operations.
     validations:
       required: true
 
@@ -44,9 +36,11 @@ body:
     id: why
     attributes:
       label: Why?
-      description: |-
+      description: >-
         Please explain why this task is necessary and what value it provides
       placeholder: |-
+        Example:
+
         Customer onboarding teams are spending 3-4 hours explaining inventory
         movement concepts to new warehouse managers. Existing API documentation
         focuses on individual mutations but doesn't explain the complete
@@ -57,28 +51,14 @@ body:
       required: true
 
   - type: textarea
-    id: how
-    attributes:
-      label: How? (Optional)
-      description: |-
-        Please describe how you think this task should be approached
-      placeholder: |-
-        Review existing GraphQL schema documentation and identify gaps in
-        movement workflow coverage. Interview customer success team about
-        common questions. Create step-by-step guides with code examples for
-        typical scenarios like receiving inventory, moving between locations,
-        and picking for orders. Add diagrams showing the relationship between
-        InventoryItem, Repository, and Movement types.
-    validations:
-      required: false
-
-  - type: textarea
     id: acceptance_criteria
     attributes:
       label: Acceptance Criteria
-      description: |-
+      description: >-
         Please list what should be completed when this task is done
       placeholder: |-
+        Example:
+
         - [ ] Complete documentation for all inventory movement GraphQL operations
         - [ ] Step-by-step workflow guides for receiving, moving, and picking scenarios
         - [ ] Code examples with realistic warehouse data for each operation
@@ -87,3 +67,21 @@ body:
         - [ ] Documentation published to docs.pyck.cloud
     validations:
       required: true
+
+  - type: textarea
+    id: how
+    attributes:
+      label: How? (Optional)
+      description: >-
+        Please describe how you think this task should be approached
+      placeholder: |-
+        Example:
+
+        Review existing GraphQL schema documentation and identify gaps in
+        movement workflow coverage. Interview customer success team about common
+        questions. Create step-by-step guides with code examples for typical
+        scenarios like receiving inventory, moving between locations, and
+        picking for orders. Add diagrams showing the relationship between
+        InventoryItem, Repository, and Movement types.
+    validations:
+      required: false

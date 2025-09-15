@@ -1,11 +1,12 @@
 name: Defect
-description: |-
+type: Defect
+description: >-
   Report a feature that does not work as documented or behaves differently
   than expected
 body:
   - type: markdown
     attributes:
-      value: |-
+      value: >-
         A defect means the software is not working as it should according to
         documentation or requirements. Use this template when something is
         broken or works differently than expected.
@@ -16,11 +17,13 @@ body:
     id: description
     attributes:
       label: Description
-      description: |-
+      description: >-
         Please provide as much detail as possible about what is not working.
         Include the problem summary, relevant documentation links, and any
         additional context that will help us understand and fix the issue.
       placeholder: |-
+        Example:
+
         The createInventoryItem mutation fails with a validation error when
         using valid SKU formats. According to the GraphQL API documentation
         (https://docs.pyck.cloud/graphql-api/mutations/create-inventory-item),
@@ -37,14 +40,15 @@ body:
     id: observed_behavior
     attributes:
       label: Observed Behavior
-      description: |-
+      description: >-
         Please describe what you observe happening (the wrong behavior)
       placeholder: |-
-        When I call the createInventoryItem mutation with a valid SKU
-        (format: "WH-ABC-001"), the GraphQL API returns a validation error:
-        "Invalid SKU format". The mutation fails even though the SKU follows
-        the documented format requirements. This happens consistently with
-        any SKU containing hyphens.
+        Example:
+
+        When I call the createInventoryItem mutation with a valid SKU, the
+        GraphQL API returns a validation error "Invalid SKU format". The
+        mutation fails even though the SKU follows the documented format
+        requirements. This happens consistently with any SKU containing hyphens.
     validations:
       required: true
 
@@ -52,14 +56,16 @@ body:
     id: expected_behavior
     attributes:
       label: Expected Behavior
-      description: |-
+      description: >-
         Please describe what you expected to happen (the correct behavior)
       placeholder: |-
+        Example:
+
         According to the GraphQL API documentation, the createInventoryItem
-        mutation should accept SKUs in alphanumeric format with optional
-        hyphens and underscores. The mutation should successfully create an
-        inventory item and return the new item's ID when provided with valid
-        input data including a properly formatted SKU.
+        mutation should accept SKUs in alphanumeric format with optional hyphens
+        and underscores. The mutation should successfully create an inventory
+        item and return the new item's ID when provided with valid input data
+        including a properly formatted SKU.
     validations:
       required: true
 
@@ -67,9 +73,11 @@ body:
     id: steps_to_reproduce
     attributes:
       label: Reproduction Steps
-      description: |-
+      description: >-
         Please list the steps needed to make this problem happen again
       placeholder: |-
+        Example:
+
         1. Open GraphQL playground or API client
         2. Execute createInventoryItem mutation with these variables:
            - name: "Test Product"
@@ -79,14 +87,17 @@ body:
         4. Observe the validation error response
     validations:
       required: true
-      
+
   - type: input
     id: version
     attributes:
       label: Version
-      description: |-
-        Which version has this problem? Please provide the version number and/or commit ID
+      description: >-
+        Which version has this problem? Please provide the version number and/or
+        commit ID
       placeholder: |-
+        Example:
+
         v0.1.2 (d34db33f)
     validations:
       required: true
@@ -95,13 +106,15 @@ body:
     id: proposed_fix
     attributes:
       label: Suggested Solution (Optional)
-      description: |-
+      description: >-
         If you have ideas about how to fix this, please share them with us
       placeholder: |-
-        The createInventoryItem mutation should properly validate SKU format
-        and accept hyphens as documented. The validation logic should check
-        for alphanumeric characters plus hyphens/underscores instead of
-        rejecting valid SKU formats that contain hyphens.
+        Example:
+
+        The createInventoryItem mutation should properly validate SKU format and
+        accept hyphens as documented. The validation logic should check for
+        alphanumeric characters plus hyphens/underscores instead of rejecting
+        valid SKU formats that contain hyphens.
     validations:
       required: false
 

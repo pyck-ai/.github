@@ -15,8 +15,7 @@ above this placeholder.
 
 - [ ] Feature — *This PR adds new or improves existing functionality*
 - [ ] Defect — *This PR fixes something that was not working correctly*
-
-- [ ] Breaking change — *The changes in this PR are not backwards compatible.
+- [ ] Breaking change — *The changes in this PR are not backwards compatible*
 
 **Please confirm you have completed the following testing steps:**
 

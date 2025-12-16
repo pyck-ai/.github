@@ -11,21 +11,18 @@ above this placeholder.
 
 ## PR Compliance
 
-**Please check all the boxes below, that apply to this pull request:**
+**Please select all that apply (zero or more):**
 
 - [ ] Feature — *This PR adds new or improves existing functionality*
 - [ ] Defect — *This PR fixes something that was not working correctly*
-- [ ] Breaking change — *The changes in this PR are not backwards compatible*
+- [ ] **Breaking Change** — *The changes in this PR are **not** backwards compatible*
 
-**Please confirm you have completed the following testing steps:**
 
-- [ ] I have tested the changes manually and they work as expected
-- [ ] I have added/updated tests that cover the changes in this PR
+**Required: Please confirm you have completed the following testing steps:**
 
-**Please confirm you have updated documentation where needed:**
+- [ ] **I hereby confirm that I have tested the changes manually and they work as expected**
+- [ ] **I hereby confirm that I have added/updated tests that cover the changes in this PR**
 
-- [ ] I have updated the API documentation
-- [ ] I have Updated the user documentation
 
 ## Additional Information
 

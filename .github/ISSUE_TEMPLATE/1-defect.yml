@@ -1,26 +1,38 @@
 name: Defect
-type: Defect
+type: defect
+labels:
+  - needs triage
 description: >-
-  Report a feature that does not work as documented or behaves differently
-  than expected
+  A deviation from the expected behavior; a bug or error in the product or
+  system that needs to be fixed.
 body:
   - type: markdown
     attributes:
       value: >-
-        A defect means the software is not working as it should according to
-        documentation or requirements. Use this template when something is
-        broken or works differently than expected.
+        A defect is any deviation from expected behavior - when the product or
+        system doesn't work as it should. This includes technical bugs, but also
+        any situation where the product:
+        
+        - Doesn't match what was specified or documented
 
-        Please provide clear details so we can understand and fix the problem.
+        - Behaves inconsistently with established patterns elsewhere in the product
+
+        - Fails to meet reasonable expectations based on the feature description
+
+        - Is incomplete, missing, or delivered incorrectly
+
+
+        Use this template when something is broken, behaving incorrectly,
+        inconsistent, incomplete, or otherwise not meeting expectations.
 
   - type: textarea
     id: description
     attributes:
       label: Description
       description: >-
-        Please provide as much detail as possible about what is not working.
-        Include the problem summary, relevant documentation links, and any
-        additional context that will help us understand and fix the issue.
+        Provide a clear summary of the defect. What is wrong, missing, or not
+        working as expected? Include any relevant context that helps explain the
+        issue.
       placeholder: |-
         Example:
 
@@ -41,7 +53,8 @@ body:
     attributes:
       label: Observed Behavior
       description: >-
-        Please describe what you observe happening (the wrong behavior)
+        Describe what actually happens — the incorrect, incomplete,
+        inconsistent, or missing behavior you're experiencing.
       placeholder: |-
         Example:
 
@@ -57,7 +70,9 @@ body:
     attributes:
       label: Expected Behavior
       description: >-
-        Please describe what you expected to happen (the correct behavior)
+        Describe what should happen — the correct behavior according to
+        specifications, documentation, established patterns in the product, or
+        reasonable expectations.
       placeholder: |-
         Example:
 
@@ -74,15 +89,16 @@ body:
     attributes:
       label: Reproduction Steps
       description: >-
-        Please list the steps needed to make this problem happen again
+        List the specific steps needed to observe this defect. Clear
+        reproduction steps help us identify and fix the issue faster.
       placeholder: |-
         Example:
 
         1. Open GraphQL playground or API client
-        2. Execute createInventoryItem mutation with these variables:
-           - name: "Test Product"
-           - sku: "WH-ABC-001"
-           - repositoryId: "valid-repo-id"
+        2. Execute `createInventoryItem` mutation with these variables:
+           - name: `Test Product`
+           - sku: `WH-ABC-001`
+           - repositoryId: `valid-repo-id`
         3. Submit the mutation request
         4. Observe the validation error response
     validations:
@@ -93,12 +109,10 @@ body:
     attributes:
       label: Version
       description: >-
-        Which version has this problem? Please provide the version number and/or
-        commit ID
+        Which version of the product has this defect? Provide the version
+        number, build number, and/or commit ID.
       placeholder: |-
-        Example:
-
-        v0.1.2 (d34db33f)
+        Example: v0.17.1 (d34db33f)
     validations:
       required: true
 
@@ -107,7 +121,7 @@ body:
     attributes:
       label: Suggested Solution (Optional)
       description: >-
-        If you have ideas about how to fix this, please share them with us
+        If you have ideas about how to fix this defect, share them here.
       placeholder: |-
         Example:
 
@@ -117,4 +131,3 @@ body:
         valid SKU formats that contain hyphens.
     validations:
       required: false
-

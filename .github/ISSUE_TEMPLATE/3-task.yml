@@ -1,15 +1,22 @@
 name: Task
-type: Task
+type: task
 description: >-
-  Any work that doesn't fit as a feature or defect
+  A foundational unit of work that is neither a defect nor a new feature, often
+  representing necessary internal activities, maintenance, documentation, and
+  preparatory work.
 body:
   - type: markdown
     attributes:
       value: >-
-        A task is any work that doesn't fit as a feature or defect. This
-        includes maintenance, investigations, documentation, organizational
-        work, process improvements, research, setup tasks, or anything else that
-        needs to be tracked and completed.
+        A task is a foundational unit of work that is neither a defect nor a new
+        feature. Tasks represent necessary internal activities, maintenance,
+        documentation, and preparatory work that keeps the project healthy and
+        moving forward.
+
+        Common examples include: maintenance work, technical investigations,
+        documentation updates, refactoring, testing infrastructure, build
+        configuration, dependency updates, research, setup activities, process
+        improvements, and organizational work.
 
         Please provide clear details using the "What, Why, How" approach to help
         us understand and prioritize the work.
@@ -19,7 +26,8 @@ body:
     attributes:
       label: What?
       description: >-
-        Please describe exactly what work needs to be done
+        Describe exactly what work needs to be done. Be specific about the scope
+        and deliverables.
       placeholder: |-
         Example:
 
@@ -37,7 +45,8 @@ body:
     attributes:
       label: Why?
       description: >-
-        Please explain why this task is necessary and what value it provides
+        Explain why this task is necessary. What problem does it solve or what
+        value does it provide to the project or team?
       placeholder: |-
         Example:
 
@@ -55,16 +64,17 @@ body:
     attributes:
       label: Acceptance Criteria
       description: >-
-        Please list what should be completed when this task is done
+        List the criteria that define when this task is complete. What
+        deliverables or outcomes indicate successful completion?
       placeholder: |-
         Example:
 
-        - [ ] Complete documentation for all inventory movement GraphQL operations
-        - [ ] Step-by-step workflow guides for receiving, moving, and picking scenarios
-        - [ ] Code examples with realistic warehouse data for each operation
-        - [ ] Visual diagrams showing relationships between inventory types
-        - [ ] Customer success team reviews and approves documentation
-        - [ ] Documentation published to docs.pyck.cloud
+        - [ ] Documentation page created at docs.pyck.cloud/api/inventory-movements
+        - [ ] All 3 inventory movement mutations documented with parameter descriptions
+        - [ ] At least 5 code examples provided covering common scenarios
+        - [ ] Workflow diagram included showing movement state transitions
+        - [ ] Customer success team has reviewed and approved the content
+        - [ ] Documentation is indexed and searchable on docs site
     validations:
       required: true
 
@@ -73,7 +83,8 @@ body:
     attributes:
       label: How? (Optional)
       description: >-
-        Please describe how you think this task should be approached
+        If you have ideas about the approach or methodology for completing this
+        task, describe them here.
       placeholder: |-
         Example:
 

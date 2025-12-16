@@ -1,0 +1,63 @@
+name: Epic
+type: epic
+description: >-
+  A large body of work that can be broken down into smaller features and tasks,
+  representing a significant goal.
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        An epic represents a large body of work that can be broken down into
+        smaller features and tasks. It captures a significant goal that requires
+        multiple iterations or releases to complete.
+
+        Each epic will be broken down into smaller Features and Tasks in
+        separate issues. This makes it easier to turn big ideas into actual
+        work.
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Description & Context
+      description: >-
+        Describe the epic and provide context. What problem does this solve? Why
+        is this important? Include relevant background information, user needs,
+        technical considerations, or dependencies.
+      placeholder: |-
+        Example:
+
+        Implement a comprehensive order verification system to reduce picking
+        errors in the warehouse. This epic addresses the increasing error rates
+        observed in Q1 2024, where picking errors rose from 2.1% to 3.8%.
+
+        The system will include:
+        - Visual confirmation steps for pickers
+        - Barcode scanning validation
+        - Real-time error detection and alerts
+        - Analytics dashboard for error tracking
+
+        This work depends on the warehouse scanner hardware upgrade (Epic #123)
+        and will integrate with the existing WMS system.
+    validations:
+      required: true
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: Success Criteria
+      description: >-
+        Define what "done" looks like for this epic. Include measurable
+        outcomes, acceptance criteria, or key milestones that indicate
+        successful completion.
+      placeholder: |-
+        Example:
+
+        - [ ] Visual confirmation workflow deployed to all 5 warehouse zones
+        - [ ] Barcode scanner integration tested with 99.9% success rate across 1000 scans
+        - [ ] Error alert system delivers notifications within 5 seconds (measured via logging)
+        - [ ] Analytics dashboard accessible at /analytics/picking-errors with 6 key metrics
+        - [ ] Picking error rate measured below 2.5% for 2 consecutive weeks
+        - [ ] System successfully handles 500 concurrent users during load testing
+        - [ ] All features documented in user manual and training materials published
+    validations:
+      required: true

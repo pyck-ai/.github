@@ -1,24 +1,27 @@
 name: Feature
-type: Feature
+type: feature
 description: >-
-  Request a new feature or improvement to existing functionality
+  A new piece of functionality or an enhancement to the product that delivers
+  value to the end-user.
 body:
   - type: markdown
     attributes:
       value: >-
-        A feature describes new functionality or improvements to existing
-        features. Use this template to request new capabilities for the
-        warehouse management system.
+        A feature is a new piece of functionality or an enhancement to the
+        product that delivers value to the end-user. Use this template to
+        request new capabilities or improvements that will benefit users of the
+        system.
 
-        Please provide clear details using the "What, Why, How" approach to
-        help us understand and build what you need.
+        Please provide clear details using the "What, Why, How" approach to help
+        us understand and build what you need.
 
   - type: textarea
     id: what
     attributes:
       label: What?
       description: >-
-        Please describe exactly what functionality should be added or changed.
+        Describe exactly what functionality should be added or enhanced. What
+        will users be able to do with this feature?
       placeholder: |-
         Example:
 
@@ -37,7 +40,8 @@ body:
     attributes:
       label: Why?
       description: >-
-        Please explain why this this feature is needed.
+        Explain why this feature is needed and what value it delivers to
+        end-users. What problem does it solve? What benefit does it provide?
       placeholder: |-
         Example:
 
@@ -57,17 +61,18 @@ body:
     attributes:
       label: Acceptance Criteria
       description: >-
-        Please list which criteria must be fulfilled for this feature to be
-        considered complete.
+        List the criteria that must be fulfilled for this feature to be
+        considered complete. Focus on user-facing outcomes and functionality.
       placeholder: |-
         Example:
 
-        - [ ] As a warehouse manager, I can create inventory items with serial numbers via GraphQL
-        - [ ] As a warehouse manager, I can assign serial numbers to existing inventory items
-        - [ ] As a warehouse manager, I can query inventory items by specific serial numbers
-        - [ ] As a warehouse manager, I can see all serial numbers associated with an inventory item
-        - [ ] As a warehouse manager, I can remove or update serial number assignments
-        - [ ] As a developer, I can use the new SerialNumber type in GraphQL queries
+        - [ ] createInventoryItem mutation accepts optional serialNumbers array parameter
+        - [ ] assignSerialNumber mutation created and accepts inventoryItemId and serialNumber
+        - [ ] removeSerialNumber mutation created and accepts serialNumberId
+        - [ ] Serial number uniqueness constraint enforced (returns error for duplicates)
+        - [ ] inventoryItems query accepts serialNumber filter parameter
+        - [ ] InventoryItem.serialNumbers field returns array of SerialNumber objects
+        - [ ] API documentation updated with serial number field descriptions and examples
     validations:
       required: true
 
@@ -76,8 +81,8 @@ body:
     attributes:
       label: How? (Optional)
       description: >-
-        If you already have an idea, please describe how you think this feature
-        should be implemented.
+        If you have ideas about how this feature should be implemented or how
+        users should interact with it, describe them here.
       placeholder: |-
         Example:
 
@@ -94,8 +99,8 @@ body:
     attributes:
       label: Impact Assessment (Optional)
       description: >-
-        If you can, please describe what systems, components and/or processes
-        will be affected by this change.
+        If known, describe what systems, components, and/or processes will be
+        affected by this feature.
       placeholder: |-
         Example:
 

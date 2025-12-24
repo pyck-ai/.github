@@ -13,15 +13,15 @@ above this placeholder.
 
 **Please select all that apply (zero or more):**
 
-- [ ] Feature — *This PR adds new or improves existing functionality*
-- [ ] Defect — *This PR fixes something that was not working correctly*
-- [ ] **Breaking Change** — *The changes in this PR are **not** backwards compatible*
+- [ ] This PR **adds new or improves** existing functionality *(Feature, Task)*
+- [ ] This PR **fixes** something that was not working correctly *(Defect)*
+- [ ] The changes in this PR are **not** backwards compatible *(Breaking Change)*
 
 
 **Required: Please confirm you have completed the following testing steps:**
 
-- [ ] **I hereby confirm that I have tested the changes manually and they work as expected**
-- [ ] **I hereby confirm that I have added/updated tests that cover the changes in this PR**
+- [ ] I hereby confirm that **I have tested the changes manually** and they work as expected
+- [ ] I hereby confirm that **I have added/updated tests** that cover the changes in this PR where necessary
 
 
 ## Additional Information

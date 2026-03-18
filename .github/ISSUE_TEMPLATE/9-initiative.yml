@@ -1,0 +1,92 @@
+name: Initiative
+type: initiative
+description: >-
+  The highest-level planning artifact, comprising multiple epics to achieve a
+  major strategic objective.
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        An initiative is the highest-level planning artifact, comprising
+        multiple epics to achieve a major strategic objective. Initiatives
+        represent long-term, organization-wide efforts that typically span
+        multiple quarters or releases.
+
+        Each initiative will be broken down into multiple Epics (linked as child
+        issues), which in turn are broken down into Features and Tasks. This
+        hierarchical structure helps align day-to-day work with strategic
+        business objectives.
+
+  - type: textarea
+    id: strategic_objective
+    attributes:
+      label: Strategic Objective
+      description: >-
+        Describe the major strategic objective this initiative aims to achieve.
+        What is the overarching goal? How does this align with organizational
+        strategy and priorities?
+      placeholder: |-
+        Example:
+
+        Transform our warehouse management platform into a comprehensive supply
+        chain optimization solution by expanding from basic inventory tracking
+        to intelligent demand forecasting, automated replenishment, and
+        predictive analytics.
+
+        This initiative aligns with our 2029-2030 strategy to move upmarket and
+        serve enterprise customers requiring end-to-end supply chain visibility
+        and optimization. Success will position pyck as a complete supply chain
+        platform rather than just a WMS.
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope_and_impact
+    attributes:
+      label: Scope & Expected Impact
+      description: >-
+        Describe the scope of this initiative and the expected business impact.
+        What will be achieved? What value will this deliver? Include market
+        opportunities, revenue targets, customer benefits, or competitive
+        advantages.
+      placeholder: |-
+        Example:
+
+        **Scope:** This initiative covers the development of demand forecasting,
+        automated replenishment, predictive analytics, and real-time inventory
+        optimization capabilities. Individual epics will be created for each
+        major component and linked to this initiative.
+
+        Expected Impact:
+        - Enable entry into enterprise segment (500+ employees)
+        - Target addressable market expansion from $50M to $500M
+        - Project $5M ARR from new enterprise customers in Year 1
+        - Increase average contract value by 40%
+        - Reduce customer churn by 25% through increased product stickiness
+        - Help customers reduce inventory carrying costs by 15-20%
+        - Improve customer forecast accuracy from 65% to 85%
+        - Enable single platform for end-to-end supply chain operations
+    validations:
+      required: true
+
+  - type: textarea
+    id: success_metrics
+    attributes:
+      label: Success Metrics & KPIs
+      description: >-
+        Define the key performance indicators and success metrics for this
+        initiative. How will you measure whether the strategic objective has
+        been achieved?
+      placeholder: |-
+        Example:
+
+        - [ ] Platform processes 10M+ inventory transactions per day
+        - [ ] Forecast accuracy reaches 85% across pilot customers
+        - [ ] At least 5 enterprise customers (>$100K ARR) live in production
+        - [ ] Net Revenue Retention reaches 120% in enterprise segment
+        - [ ] Customer satisfaction score (CSAT) above 4.5/5 for new features
+        - [ ] Platform uptime maintains 99.9% SLA
+        - [ ] Time-to-value reduced from 6 months to 3 months for enterprise onboarding
+        - [ ] Product recognized in analyst reports as comprehensive supply chain platform
+    validations:
+      required: true

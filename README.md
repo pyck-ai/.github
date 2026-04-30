@@ -102,7 +102,7 @@ root.
 **Full reference**
 
 A complete config — including the MCP servers, agent variants, and auth
-plugin used by the pyck-ai team — is in [`opencode.example.json`](./opencode.example.json).
+plugin used by the Pyck team — is in [`opencode.example.json`](./opencode.example.json).
 Copy it to `~/.config/opencode/opencode.json` and replace:
 
 - `<path-to-pyck-github-checkout>` with your local clone path.

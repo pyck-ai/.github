@@ -18,7 +18,7 @@ GitHub organization:
 | `.github/CODE_OF_CONDUCT.md` | Community code of conduct | Org-wide auto |
 | `.github/SECURITY.md` | Vulnerability disclosure policy | Org-wide auto |
 | `.github/PULL_REQUEST_TEMPLATE.md` | Default PR template | Org-wide auto |
-| `.github/ISSUE_TEMPLATE/*.yml` | Defect, feature, task, epic, initiative forms | Org-wide auto |
+| `.github/ISSUE_TEMPLATE/*.yml` | Defect, feature, and task issue forms | Org-wide auto |
 | `.claude/AGENTS.md` | Agent protocol entry point (lazy-loads the standards below) | Opt-in per project |
 | `.claude/ISSUE_STANDARDS.md` | Issue classification + per-type templates | Opt-in |
 | `.claude/PR_STANDARDS.md` | PR template usage rules | Opt-in |

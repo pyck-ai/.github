@@ -12,7 +12,12 @@ run-name: Renovate (org)
 # so a fresh ~1h window covers every repo and one failure can't block the rest.
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    # Hourly at :30, not :00. GitHub's scheduler is best-effort and most
+    # congested at the top of the hour, where runs are routinely delayed or
+    # dropped; running 30 minutes past the hour lands more reliably. (Sub-hour
+    # intervals like */15 are throttled hard and effectively don't fire, which
+    # is why this is hourly rather than every 15 minutes.)
+    - cron: '30 * * * *'
   workflow_dispatch:
     inputs:
       filter:
@@ -21,7 +26,7 @@ on:
 
 # No concurrency group: GitHub concurrency can only queue or cancel a run,
 # never skip it. The `guard` job below makes a freshly scheduled run bail when
-# an earlier run is still in progress, so 15-minute ticks never pile up.
+# an earlier run is still in progress, so overlapping runs never pile up.
 permissions: {}
 
 jobs:

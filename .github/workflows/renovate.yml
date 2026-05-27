@@ -12,23 +12,49 @@ run-name: Renovate (org)
 # so a fresh ~1h window covers every repo and one failure can't block the rest.
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '*/15 * * * *'
   workflow_dispatch:
     inputs:
       filter:
         description: 'Optional regex on owner/repo, e.g. baseimages'
         required: false
 
-# Never run two org sweeps at once; let an in-flight run finish.
-concurrency:
-  group: renovate-org
-  cancel-in-progress: false
-
-# Jobs authenticate via the App installation token, not GITHUB_TOKEN.
+# No concurrency group: GitHub concurrency can only queue or cancel a run,
+# never skip it. The `guard` job below makes a freshly scheduled run bail when
+# an earlier run is still in progress, so 15-minute ticks never pile up.
 permissions: {}
 
 jobs:
+  # If an earlier run of this workflow is still in progress, skip this one
+  # instead of queueing behind it.
+  guard:
+    runs-on: self-hosted
+    permissions:
+      actions: read # list this workflow's runs
+    outputs:
+      proceed: ${{ steps.check.outputs.proceed }}
+    steps:
+      - id: check
+        uses: actions/github-script@d746ffe35508b1917358783b479e04febd2b8f71 # v9.0.0
+        with:
+          script: |
+            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'renovate.yml',
+              status: 'in_progress',
+              per_page: 100,
+            });
+            // Run ids increase over time, so a smaller id means an earlier run.
+            const proceed = !runs.some((r) => r.id < context.runId);
+            if (!proceed) {
+              core.notice('An earlier Renovate run is still in progress; skipping.');
+            }
+            core.setOutput('proceed', proceed ? 'true' : 'false');
+
   discover:
+    needs: guard
+    if: needs.guard.outputs.proceed == 'true'
     runs-on: self-hosted
     environment: renovate
     outputs:
@@ -38,7 +64,7 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
-          app-id: ${{ vars.RENOVATE_APP_ID }}
+          client-id: ${{ vars.RENOVATE_APP_CLIENT_ID }}
           private-key: ${{ secrets.RENOVATE_APP_SECRET }}
           owner: ${{ github.repository_owner }}
 
@@ -81,7 +107,7 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
-          app-id: ${{ vars.RENOVATE_APP_ID }}
+          client-id: ${{ vars.RENOVATE_APP_CLIENT_ID }}
           private-key: ${{ secrets.RENOVATE_APP_SECRET }}
           owner: ${{ github.repository_owner }}
           repositories: ${{ matrix.repo.name }}

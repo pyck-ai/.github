@@ -131,4 +131,12 @@ jobs:
           # pattern is fixed so onboarding a repo never requires editing this
           # workflow. Guard the path in each repo via CODEOWNERS.
           RENOVATE_ALLOWED_COMMANDS: '["^\\./\\.github/renovate-post-upgrade\\.sh$"]'
+          # Footer on every repo's Dependency Dashboard, pointing back to this
+          # central runner so maintainers know where their updates come from.
+          RENOVATE_DEPENDENCY_DASHBOARD_FOOTER: |2
+
+            ---
+            🤖 Dependencies in this repository are updated by the org-wide
+            [Renovate runner](https://github.com/pyck-ai/.github/actions/workflows/renovate.yml),
+            defined in [`pyck-ai/.github`](https://github.com/pyck-ai/.github/blob/HEAD/.github/workflows/renovate.yml).
           LOG_LEVEL: 'debug'

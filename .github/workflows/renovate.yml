@@ -126,4 +126,9 @@ jobs:
           RENOVATE_AUTODISCOVER: 'false'
           RENOVATE_ONBOARDING: 'false'
           RENOVATE_REQUIRE_CONFIG: 'required'
+          # Allowlist for repo postUpgradeTasks (self-hosted admin config). A repo
+          # opts into post-upgrade work by committing this exact hook path; the
+          # pattern is fixed so onboarding a repo never requires editing this
+          # workflow. Guard the path in each repo via CODEOWNERS.
+          RENOVATE_ALLOWED_COMMANDS: '["^\\./\\.github/renovate-post-upgrade\\.sh$"]'
           LOG_LEVEL: 'debug'

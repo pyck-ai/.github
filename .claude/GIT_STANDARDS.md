@@ -1,5 +1,7 @@
 # Git Standards
 
+The commit message is the **single source of truth for the change**: what shipped and why it was done this way. It must stand entirely on its own — a reader of `git log` years from now must understand the rationale without opening the linked issue or PR. Issue/PR links are conveniences, never required reading. The PR is only a review mechanism and is never the source of truth (see the change lifecycle in AGENTS.md). If a piece of context matters for the future, it belongs in the commit body, not the PR description.
+
 When creating commits, follow [Tim Pope's commit message guidelines](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html). The key rules are:
 
 ## Subject line
@@ -13,6 +15,7 @@ When creating commits, follow [Tim Pope's commit message guidelines](https://tba
 - Separated from the subject by a **single blank line**
 - **Wrap at 72 characters**
 - Focus on **why** the change was made, not what (the diff shows what)
+- Make it **self-contained**: include enough context that the reader never has to open the linked issue or PR to understand why. Distill the relevant intent from the issue into the body rather than pointing at it.
 - If the explanation needs more than two paragraphs, add a bulleted TLDR summary at the top of the body
 
 ## Footer

@@ -1,12 +1,13 @@
 <!-- ---------------------------------------------------------------------------
-Please briefly describe what your Pull Request changes or adds. If your pull
-request is related to any GitHub issues, please link them below, like this:
+Please write a SHORT executive summary of what your Pull Request changes or adds
+— ideally one paragraph, at most two. This is a high-level summary for reviewers,
+NOT a copy of the commit messages or a per-commit changelog. Explain the overall
+change and why it matters, not every individual step.
+
+If your pull request is related to any GitHub issues, please link them below,
+like this:
 
 Closes: #123, #456
-
-In case you have created this PR with a proper commit message following our
-commit guidelines, GitHub should have automatically added the commit message
-above this placeholder.
 ---------------------------------------------------------------------------- -->
 
 ## PR Compliance

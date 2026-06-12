@@ -1,5 +1,7 @@
 # Issue Standards
 
+An issue is the **single source of truth for *intent*** — why a change is wanted and the acceptance criteria that define "done". It is the mechanism that produces commits and PRs; it does not record the change itself (that is the commit's job). See the change lifecycle in AGENTS.md for how issues, commits, and PRs relate.
+
 ## Issue Classification & Selection
 
 When the user's request involves creating a GitHub issue, you MUST classify it into exactly one of the following types and select the corresponding Issue Type when prompted:
@@ -20,6 +22,28 @@ The vast majority of tickets should be **DEFECT**, **FEATURE**, or **TASK**. Def
 - **Use EPIC only** when the work clearly spans multiple distinct Features/Tasks that need to be tracked together under a shared goal.
 - **Use INITIATIVE only** when coordinating multiple Epics toward a strategic objective — this is rare and typically driven by leadership or long-range planning.
 - When in doubt, create a FEATURE or TASK with a narrow, well-defined scope. If it later becomes clear that the work is part of something bigger, promote it then.
+
+### No meta-tickets
+
+Since an issue's only job is to carry *intent*, every issue must add intent of its own. A **meta-ticket** — an issue whose only purpose is to group or point at other issues without contributing its own description or acceptance criteria — adds nothing and is just noise. Do not create them. Before creating any "umbrella" or "tracking" ticket, ask whether it carries its own substance (a distinct description, its own acceptance criteria). If not, drop it and let each ticket stand on its own.
+
+- **Each ticket must stand on its own.** A handful of related fixes do not need a parent to tie them together — create them as independent DEFECT/FEATURE/TASK tickets, each with a well-defined scope.
+- **Don't fragment issues to mirror PRs or commits.** One PR may close several issues, and one issue may span several commits (see the change lifecycle in AGENTS.md). Never invent an extra parent/umbrella issue just to bundle work that will ship together — the PR is the bundle, and the commits are the record. Conversely, don't split work into separate PRs just because it touches separate issues.
+
+### Parent / sub-issue relationships
+
+Parent ↔ sub-issue links are fine, but **only** when the parent carries real intent of its own and the split serves an organizational purpose:
+
+- **The parent is the SSOT of intent for the grouped work.** The parent ticket holds the description and defines the acceptance criteria. Sub-issues exist to break the work into chunks that can be implemented incrementally or in parallel by multiple devs, and to make that progress visible on the kanban board.
+- **Sub-issues are organizational proxies and carry no Issue Type.** They exist purely for visibility on the kanban board; the parent (typically a FEATURE or EPIC) remains the source of truth that defines the ACs. Do not duplicate or fragment the acceptance criteria across the sub-issues.
+- **If the parent adds nothing, remove it.** When the would-be parent has no intent of its own and every sub-ticket can stand alone, delete the parent and keep the standalone tickets.
+
+### Classify by the actual problem
+
+Choose the Issue Type that matches what the ticket really describes, so the template's sections fit the content:
+
+- A ticket describing a **correctness issue** (something behaving incorrectly) is a **DEFECT**, even if it was first framed as a generic task. As a DEFECT, its Observed/Expected Behavior sections capture the problem cleanly.
+- Watch for a misclassified ticket whose "Why?" section is really just describing observed-vs-expected behavior — that is a signal it should be a DEFECT rather than a FEATURE/TASK.
 
 ### Other rules
 

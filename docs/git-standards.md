@@ -8,6 +8,7 @@ When creating commits, follow [Tim Pope's commit message guidelines](https://tba
 
 - **50 characters max**, imperative mood, capitalized first letter, no trailing period
 - No prefixes (e.g., `feat:`, `fix:`): just a plain imperative sentence
+- A commit that fixes a bug starts its subject with "Fix" (e.g., "Fix duplicate starts from state-change events"), still with no `fix:` prefix
 - Summarize **what** the change does
 
 ## Body
@@ -23,7 +24,7 @@ When creating commits, follow [Tim Pope's commit message guidelines](https://tba
 The footer is **optional**: include it only when there is something concrete to reference or flag. A commit with no related issue and no breaking change correctly has no footer at all. Never invent a reference to satisfy a template, and never attach an issue the commit is not genuinely part of: shipping on the same branch as an issue's work does not make a commit part of that issue.
 
 - Separated from the body by a **single blank line**
-- **If** the commit relates to an issue, PR, commit, ADR, or external link, reference it on its own line, one per reference, using exactly one of three trailers: `Closes: #123` **only** when the commit actually resolves the issue (it fulfills all of the issue's acceptance criteria and is intended to close it in GitHub); `Part-of: #123` when this commit is one of several that together make up a larger change or issue, without closing it; or `See-also: #123` for a plain non-closing reference, including a reference to an issue that is **already closed** (so it isn't re-closed). No other spelling is allowed: not `Fixes`, `Fix`, `Resolves`, `Resolve`, `Implements`, `Refs`, `Ref`, `Related`, `See:`, or `See also`. See [GitHub's docs on linking a pull request to an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue).
+- **If** the commit relates to an issue, PR, commit, ADR, or external link, reference it on its own line, one issue id per line (repeat the trailer for several issues: `Closes: #1` then `Closes: #2`, never `Closes: #1, #2`, because GitHub does not handle several ids on one line correctly), using exactly one of three trailers: `Closes: #123` **only** when the commit actually resolves the issue (it fulfills all of the issue's acceptance criteria and is intended to close it in GitHub); `Part-of: #123` when this commit is one of several that together make up a larger change or issue, without closing it; or `See-also: #123` for a plain non-closing reference, including a reference to an issue that is **already closed** (so it isn't re-closed). No other spelling is allowed: not `Fixes`, `Fix`, `Resolves`, `Resolve`, `Implements`, `Refs`, `Ref`, `Related`, `See:`, or `See also`. See [GitHub's docs on linking a pull request to an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue).
 - If the change is not backwards compatible, add a `BREAKING CHANGE: <explanation>` section with a migration path
 
 ## Example

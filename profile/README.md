@@ -4,7 +4,7 @@
 
 The **Pyck Open Source Framework for Warehouse Software** lets you
 build, operate, optimize, and extend the software that runs your
-warehouse — instead of buying a rigid product and customizing it at
+warehouse, instead of buying a rigid product and customizing it at
 high cost.
 
 Traditional warehouse software locks you into one vendor's roadmap,
@@ -19,7 +19,7 @@ runs your floor.
 - **Fast deployment.** Go live in days, not months.
 - **No lock-ins.** Open Source freedom, zero downtime.
 - **Higher profitability.** Software that perfectly matches your
-  business — creating instead of configuring.
+  business, creating instead of configuring.
 - **Leverage AI.** Generate workflows and UIs with AI co-development,
   and put your warehouse data to work.
 
@@ -38,19 +38,19 @@ runs your floor.
 
 ## Where to start
 
-- **[pyck.ai](https://pyck.ai)** — what we're building and why.
-- **[docs.pyck.cloud](https://docs.pyck.cloud)** — documentation,
+- **[pyck.ai](https://pyck.ai)**: what we're building and why.
+- **[docs.pyck.cloud](https://docs.pyck.cloud)**: documentation,
   getting started, and API reference.
-- **[pyck-oss](https://github.com/pyck-ai/pyck-oss)** — the Open
+- **[pyck-oss](https://github.com/pyck-ai/pyck-oss)**: the Open
   Source Framework on GitHub.
 
 ## Other public projects
 
-- **[pyck-cli](https://github.com/pyck-ai/pyck-cli)** — command-line
+- **[pyck-cli](https://github.com/pyck-ai/pyck-cli)**: command-line
   interface for Pyck.
-- **[homebrew-tap](https://github.com/pyck-ai/homebrew-tap)** —
+- **[homebrew-tap](https://github.com/pyck-ai/homebrew-tap)**:
   Homebrew tap for installing the CLI.
-- **[baseimages](https://github.com/pyck-ai/baseimages)** — shared
+- **[baseimages](https://github.com/pyck-ai/baseimages)**: shared
   Docker base images used across Pyck builds.
 
 ## Join us
@@ -61,6 +61,6 @@ the industry will ever need, see open roles at
 
 ## Community
 
-- **Slack** — [join the Pyck community](https://join.slack.com/t/pyck-community/shared_invite/zt-3ulnckg7r-kBk6Spkeyk_DldYQpDmcxA)
-- **Contact** — [hello@pyck.ai](mailto:hello@pyck.ai)
-- **Security** — [security@pyck.ai](mailto:security@pyck.ai)
+- **Slack**: [join the Pyck community](https://join.slack.com/t/pyck-community/shared_invite/zt-3ulnckg7r-kBk6Spkeyk_DldYQpDmcxA)
+- **Contact**: [hello@pyck.ai](mailto:hello@pyck.ai)
+- **Security**: [security@pyck.ai](mailto:security@pyck.ai)

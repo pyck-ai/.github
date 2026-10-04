@@ -6,7 +6,7 @@ When creating commits, follow [Tim Pope's commit message guidelines](https://tba
 
 ## Subject line
 
-- **50 characters max**, imperative mood, capitalized first letter, no trailing period
+- **Aim for 50 characters, at most 72**, imperative mood, capitalized first letter, no trailing period
 - No prefixes (e.g., `feat:`, `fix:`): just a plain imperative sentence
 - A commit that fixes a bug starts its subject with "Fix" (e.g., "Fix duplicate starts from state-change events"), still with no `fix:` prefix
 - Summarize **what** the change does

@@ -6,7 +6,8 @@ open pull requests, or write commits, keeping the always-loaded context small.
 
 - `docs/github-issue-standards.md`: classification rules for defects,
   features, and tasks, plus pointers to the issue forms.
-- `docs/github-pr-standards.md`: how to fill the PR template.
+- `docs/github-pr-standards.md`: how to fill the PR template, plus what the
+  pyck-review app classifies and checks.
 - `docs/git-standards.md`: Tim Pope-style commit messages and the
   branch-naming convention.
 

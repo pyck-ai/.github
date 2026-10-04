@@ -1,9 +1,12 @@
 <!-- ---------------------------------------------------------------------------
 Start with a SHORT executive summary of what the Pull Request changes or adds,
-ideally one paragraph, at most two, with no headings. It must cover what the
-commits change and must not claim anything they do not change. Summarize the
-commits, do NOT copy them: one sentence may cover several commits, and this is
-not a per-commit changelog. Explain the overall change and why it matters.
+with no headings. Aim for 2 or 3 paragraphs; add more only when the PR really
+needs them to be understood or really makes that many changes, and never more
+than 5. It must cover what the commits change and must not claim anything they
+do not change. Summarize the commits, do NOT copy them: one sentence may cover
+several commits, and this is not a per-commit changelog. Explain the overall
+change and why it matters. Exception: a PR with a single commit may use that
+commit's message 1:1 as its summary.
 
 If the pull request is related to any GitHub issues, link them in the summary
 part, one issue per line: "Closes:" for an issue this PR fully resolves (it

@@ -56,12 +56,20 @@ The structure is always **summary + additional information**:
 
 ## Summary
 
-The summary is a short executive summary (one or two paragraphs), not a copy of
-the commit messages and not a per-commit changelog. Summarize, don't copy:
+The summary is a short executive summary, not a copy of the commit messages and
+not a per-commit changelog. Summarize, don't copy:
 
 - It describes everything the commits change; one sentence may cover several
   commits.
 - It does not claim changes that no commit makes.
+- Stay on the shorter side: aim for 2 or 3 paragraphs, and add more only when
+  the PR really needs them to be understood or really makes that many changes.
+  **5 paragraphs at most.** A list counts as one paragraph; issue-link lines do
+  not count. Details reviewers might want go under `## Additional Information`.
+
+Exception: a PR with a **single commit** may use that commit's message 1:1 as
+its summary (GitHub pre-fills the description with it). The length limit does
+not apply to such a copy.
 
 ## Classification
 
@@ -101,6 +109,7 @@ a bot, every 10 minutes. Text inside code blocks is ignored.
 | One issue per link line | [git-standards: Footer](./git-standards.md#footer) |
 | Branch is `<issue>-<desc>` or `u/<user>/<desc>` | [git-standards: Branch naming](./git-standards.md#branch-naming) |
 | Summary covers what the commits do and claims nothing they don't | [Summary](#summary) |
+| Summary has at most 5 paragraphs (not for a single-commit copy) | [Summary](#summary) |
 
 The summary rule is judged by an AI model: the label is set only when the model
 is at least 85% sure; from 50% the finding is listed as a suggestion without

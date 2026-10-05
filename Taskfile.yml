@@ -2,11 +2,23 @@ version: '3'
 
 tasks:
   generate:
-    desc: Generate the .github community-health files from src/
+    desc: Generate the .github community-health files from src/, and the badges
     cmds:
       - go run ./scripts/generate-community-files.go
+      - task: generate:badges
 
   generate:check:
-    desc: Verify the generated .github files are in sync with their sources (CI)
+    desc: Verify the generated .github files and badges are in sync (CI)
     cmds:
       - go run ./scripts/generate-community-files.go --check
+      - task: generate:badges:check
+
+  generate:badges:
+    desc: Generate the SVG badges and gallery under badges/ (downloads Mona Sans once, cached)
+    cmds:
+      - go run ./scripts/generate-badges
+
+  generate:badges:check:
+    desc: Verify the generated badges are in sync with the generator (CI)
+    cmds:
+      - go run ./scripts/generate-badges --check

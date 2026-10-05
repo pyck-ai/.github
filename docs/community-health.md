@@ -14,3 +14,11 @@ The defaults are:
 
 The issue forms and the PR template are **generated** from canonical sources in
 [`src/`](../src/). See [Contributing](./contributing.md) before editing them.
+
+## Badges
+
+[`badges/`](../badges/README.md) is not a community-health file. It holds static
+SVG badges that comments link by raw URL. It is **generated** by
+[`scripts/generate-badges/`](../scripts/generate-badges/main.go) (Mona Sans
+glyph outlines; the font is downloaded and cached, not committed). Regenerate
+with `task generate:badges`; CI-style check: `task generate:badges:check`.

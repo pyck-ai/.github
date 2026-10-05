@@ -467,13 +467,15 @@ func buildGroups() []group {
 		return badge{grp, strings.ToLower(name), label, prefix + label, fixedColour(p), false}
 	}
 	var conf []badge
-	for i := 0; i <= 100; i++ {
+	// 5% steps: finer steps are not readable apart, and callers round to the
+	// nearest step (see the gallery).
+	for i := 0; i <= 100; i += 5 {
 		pct := i
 		conf = append(conf, badge{"confidence", strconv.Itoa(pct), fmt.Sprintf("%d%%", pct),
 			fmt.Sprintf("Confidence %d%%", pct), func(m string) string { return confidenceColour(pct, m) }, false})
 	}
 	conf = append(conf,
-		badge{"confidence", "rule", "Rule", "Confidence: rule check", fixedColour(green), false},
+		badge{"confidence", "rule", "Rule", "Confidence: rule check", fixedColour(blue), false},
 		badge{"confidence", "ai", "AI", "Confidence: AI, no score", fixedColour(grey), false})
 
 	return []group{
@@ -499,8 +501,8 @@ func buildGroups() []group {
 				simple("kind", "Kind: ", "breaking", "Breaking", orange),
 			}},
 		{name: "confidence", heading: "Confidence", shareWith: "100%",
-			about: "`0` to `100` colour by value: a continuous OKLCH gradient, red at 0%, orange at 50%, yellow at 70%, green from 85%. " +
-				"85% and up is treated as sure, 50 to 85% as a suggestion. `rule` (green) is a fixed rule check, certain; `ai` (grey) has no number.",
+			about: "`0` to `100` in 5% steps (round a value to the nearest step, for example 92% to `90`), coloured by value: an OKLCH gradient, red at 0%, orange at 50%, yellow at 70%, green from 85%. " +
+				"85% and up is treated as sure, 50 to 85% as a suggestion. `rule` (blue) is a fixed rule check, not a model's guess; `ai` (grey) has no number.",
 			badges: conf},
 	}
 }

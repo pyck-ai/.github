@@ -500,6 +500,12 @@ func buildGroups() []group {
 				simple("kind", "Kind: ", "task", "Task", yellow),
 				simple("kind", "Kind: ", "breaking", "Breaking", orange),
 			}},
+		{name: "release", heading: "Release", about: "Change kinds in generated release notes (pyck-release). Not the Issue Types: a change's kind comes from its commit, not from an issue.",
+			badges: []badge{
+				simple("release", "Release: ", "bugfix", "Bugfix", red),
+				simple("release", "Release: ", "improvement", "Improvement", blue),
+				simple("release", "Release: ", "dependency", "Dependency", grey),
+			}},
 		{name: "confidence", heading: "Confidence", shareWith: "100%",
 			about: "`0` to `100` in 5% steps (round a value to the nearest step, for example 92% to `90`), coloured by value: an OKLCH gradient, red at 0%, orange at 50%, yellow at 70%, green from 85%. " +
 				"85% and up is treated as sure, 50 to 85% as a suggestion. `rule` (blue) is a fixed rule check, not a model's guess; `ai` (grey) has no number.",

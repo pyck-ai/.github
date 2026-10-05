@@ -59,6 +59,16 @@ Defect, Feature and Task use the org's Issue Type colours. Width 67, height 18.
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/task-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/task-light.svg"><img alt="Kind: Task" src="./kind/task-light.svg" width="67" height="18" align="texttop"></picture> | `kind/task` | Kind: Task |
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/breaking-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/breaking-light.svg"><img alt="Kind: Breaking" src="./kind/breaking-light.svg" width="67" height="18" align="texttop"></picture> | `kind/breaking` | Kind: Breaking |
 
+## Release
+
+Change kinds in generated release notes (pyck-release). Not the Issue Types: a change's kind comes from its commit, not from an issue. Width 93, height 18.
+
+| Badge | Path (without `-<mode>.svg`) | Title |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./release/bugfix-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./release/bugfix-light.svg"><img alt="Release: Bugfix" src="./release/bugfix-light.svg" width="93" height="18" align="texttop"></picture> | `release/bugfix` | Release: Bugfix |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./release/improvement-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./release/improvement-light.svg"><img alt="Release: Improvement" src="./release/improvement-light.svg" width="93" height="18" align="texttop"></picture> | `release/improvement` | Release: Improvement |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./release/dependency-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./release/dependency-light.svg"><img alt="Release: Dependency" src="./release/dependency-light.svg" width="93" height="18" align="texttop"></picture> | `release/dependency` | Release: Dependency |
+
 ## Confidence
 
 `0` to `100` in 5% steps (round a value to the nearest step, for example 92% to `90`), coloured by value: an OKLCH gradient, red at 0%, orange at 50%, yellow at 70%, green from 85%. 85% and up is treated as sure, 50 to 85% as a suggestion. `rule` (blue) is a fixed rule check, not a model's guess; `ai` (grey) has no number. Width 47, height 18.

@@ -493,12 +493,13 @@ func buildGroups() []group {
 				simple("status", "Status: ", "new", "New", blue),
 				simple("status", "Status: ", "open", "Open", yellow),
 			}},
-		{name: "kind", heading: "Kind", about: "Defect, Feature and Task use the org's Issue Type colours.",
+		{name: "kind", heading: "Kind", about: "Defect, Feature and Task use the org's Issue Type colours. Unknown (grey) is for a kind the classifier is not sure about.",
 			badges: []badge{
 				simple("kind", "Kind: ", "defect", "Defect", red),
 				simple("kind", "Kind: ", "feature", "Feature", blue),
 				simple("kind", "Kind: ", "task", "Task", yellow),
 				simple("kind", "Kind: ", "breaking", "Breaking", orange),
+				simple("kind", "Kind: ", "unknown", "Unknown", grey),
 			}},
 		{name: "confidence", heading: "Confidence", shareWith: "100%",
 			about: "`0` to `100` in 5% steps (round a value to the nearest step, for example 92% to `90`), coloured by value: an OKLCH gradient, red at 0%, orange at 50%, yellow at 70%, green from 85%. " +

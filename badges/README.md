@@ -50,14 +50,15 @@ Lifecycle of a finding. Width 47, height 18.
 
 ## Kind
 
-Defect, Feature and Task use the org's Issue Type colours. Width 67, height 18.
+Defect, Feature and Task use the org's Issue Type colours. Unknown (grey) is for a kind the classifier is not sure about. Width 70, height 18.
 
 | Badge | Path (without `-<mode>.svg`) | Title |
 |---|---|---|
-| <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/defect-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/defect-light.svg"><img alt="Kind: Defect" src="./kind/defect-light.svg" width="67" height="18" align="texttop"></picture> | `kind/defect` | Kind: Defect |
-| <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/feature-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/feature-light.svg"><img alt="Kind: Feature" src="./kind/feature-light.svg" width="67" height="18" align="texttop"></picture> | `kind/feature` | Kind: Feature |
-| <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/task-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/task-light.svg"><img alt="Kind: Task" src="./kind/task-light.svg" width="67" height="18" align="texttop"></picture> | `kind/task` | Kind: Task |
-| <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/breaking-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/breaking-light.svg"><img alt="Kind: Breaking" src="./kind/breaking-light.svg" width="67" height="18" align="texttop"></picture> | `kind/breaking` | Kind: Breaking |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/defect-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/defect-light.svg"><img alt="Kind: Defect" src="./kind/defect-light.svg" width="70" height="18" align="texttop"></picture> | `kind/defect` | Kind: Defect |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/feature-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/feature-light.svg"><img alt="Kind: Feature" src="./kind/feature-light.svg" width="70" height="18" align="texttop"></picture> | `kind/feature` | Kind: Feature |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/task-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/task-light.svg"><img alt="Kind: Task" src="./kind/task-light.svg" width="70" height="18" align="texttop"></picture> | `kind/task` | Kind: Task |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/breaking-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/breaking-light.svg"><img alt="Kind: Breaking" src="./kind/breaking-light.svg" width="70" height="18" align="texttop"></picture> | `kind/breaking` | Kind: Breaking |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/unknown-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/unknown-light.svg"><img alt="Kind: Unknown" src="./kind/unknown-light.svg" width="70" height="18" align="texttop"></picture> | `kind/unknown` | Kind: Unknown |
 
 ## Confidence
 

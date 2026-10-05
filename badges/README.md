@@ -60,6 +60,14 @@ Defect, Feature and Task use the org's Issue Type colours. Unknown (grey) is for
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/breaking-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/breaking-light.svg"><img alt="Kind: Breaking" src="./kind/breaking-light.svg" width="70" height="18" align="texttop"></picture> | `kind/breaking` | Kind: Breaking |
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./kind/unknown-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./kind/unknown-light.svg"><img alt="Kind: Unknown" src="./kind/unknown-light.svg" width="70" height="18" align="texttop"></picture> | `kind/unknown` | Kind: Unknown |
 
+## Undo
+
+Irreversible (orange) marks a commit that reverting does not undo: it deletes or rewrites stored data (for example a database migration that drops a column), destroys infrastructure, or has an outside effect such as sending messages. Width 79, height 18.
+
+| Badge | Path (without `-<mode>.svg`) | Title |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./undo/irreversible-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./undo/irreversible-light.svg"><img alt="Undo: Irreversible" src="./undo/irreversible-light.svg" width="79" height="18" align="texttop"></picture> | `undo/irreversible` | Undo: Irreversible |
+
 ## Confidence
 
 `0` to `100` in 5% steps (round a value to the nearest step, for example 92% to `90`), coloured by value: an OKLCH gradient, red at 0%, orange at 50%, yellow at 70%, green from 85%. 85% and up is treated as sure, 50 to 85% as a suggestion. `rule` (blue) is a fixed rule check, not a model's guess; `ai` (grey) has no number. Width 47, height 18.

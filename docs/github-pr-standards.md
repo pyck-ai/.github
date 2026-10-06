@@ -91,27 +91,29 @@ commits get new ids, so rebase the upper branch onto the new base
 Change classification is automated, not self-reported, so the PR has no
 classification checkboxes (the old "PR Compliance" ones are gone). It is done by
 [`pyck-ai/pyck-review`](https://github.com/pyck-ai/pyck-review) (a GitHub App,
-run centrally for the org). A repo opts in with `classify: true` in its
-`.github/pyck-review.json5`.
+run centrally for the org). A repo turns it on with
+`pullRequests: { commits: true }` in its `.github/pyck-review.json5`.
 
 | Aspect | Behavior |
 |---|---|
 | Unit | Each commit separately, from its message and its own diff |
 | Kind | Exactly one of Defect fix, Feature or Task per commit (every issue and every commit is exactly one kind; a PR may hold several commits) |
-| Also per commit | Whether it breaks backwards compatibility (a `BREAKING CHANGE:` footer line decides it), and whether it adds or updates tests |
+| Also per commit | Whether it breaks backwards compatibility (a `BREAKING CHANGE:` footer line decides it), and whether a revert cannot undo it (Irreversible: it deletes or rewrites data, removes infrastructure, or has an effect outside the system) |
 | Context | PR title, description, other commit subjects, and the types of the linked issues; a linked issue's type is strong evidence |
-| PR result | One kind if all commits agree, otherwise "Mixed" with counts |
-| Mismatch | If a commit's kind matches none of the linked issues' types, the comment says so |
-| Comment | One comment per PR; on a new commit a new comment is posted and the older one is hidden as outdated |
-| Status | Advisory only; never a required check, never blocks merging |
+| Where | A collapsed commits section in the PR's one pyck-review review |
+| Mismatch | A commit whose kind matches none of the linked issues' types is a tip in the review |
+| Status | Advice; never blocks merging |
 
 Implementation details live in pyck-review's README, not here.
 
 ## Guideline check
 
-Another pyck-review check. A repo opts in with `guidelines: true` in its
-`.github/pyck-review.json5`. It runs on every ready (non-draft) PR not opened by
-a bot, every 10 minutes. Text inside code blocks is ignored.
+Another pyck-review check. A repo turns it on with
+`pullRequests: { problems: true }` (pull requests) and `issues: { problems: true }`
+(issues) in its `.github/pyck-review.json5`. It runs on every ready (non-draft)
+PR not opened by a bot, when it is opened, edited or pushed to, and every 10
+minutes. Text inside code blocks is ignored. Commit messages are checked
+against [git-standards](./git-standards.md).
 
 | Rule | Defined in |
 |---|---|
@@ -124,23 +126,22 @@ a bot, every 10 minutes. Text inside code blocks is ignored.
 | One issue per link line | [git-standards: Footer](./git-standards.md#footer) |
 | Branch is `<issue>-<desc>` or `u/<user>/<desc>` | [git-standards: Branch naming](./git-standards.md#branch-naming) |
 | Summary covers what the commits do and claims nothing they don't | [Summary](#summary) |
+| Summary mentions what an Irreversible commit changes for good | [Summary](#summary) |
 | Summary has at most 5 paragraphs (not for a single-commit copy) | [Summary](#summary) |
 | At most 10 commits (a tip above 5, a follow-up above 7) | [Size](#size) |
 
-The summary rule is judged by an AI model: the label is set only when the model
-is at least 85% sure; from 50% the finding is listed as a suggestion without
-the label.
+The summary rules are judged by an AI model: a problem counts when the model is
+at least 85% sure; from 50% it is listed as a follow-up.
 
 What it does:
 
-- On problems: adds the label `guidelines-not-met` and posts a comment quoting
-  each problem with a concrete fix.
-- On a later check with a different result: posts a new comment listing what
-  was fixed and hides the older one as outdated.
-- When everything is fixed: posts "Follows the guidelines now" and removes the
-  label.
+- Posts one review per PR with a table of the problems, each with a concrete
+  fix. High problems add the label `guidelines-not-met` and request changes,
+  unless the repo sets `pullRequests: { requestChanges: false }`; then the
+  review is advice only. Whether a request for changes blocks merging depends
+  on the repo's rules.
+- On a later check with a different result: posts a new review listing what
+  was fixed, hides the older one, and dismisses its request for changes.
 - An unchanged result posts nothing.
-- It never blocks merging.
-
-Checks for commit messages and issues are planned but not built yet; see
-[pyck-ai/pyck-review#21](https://github.com/pyck-ai/pyck-review/issues/21).
+- Issues get the same check as a comment: an issue type is set, and the
+  sections of that type's form are filled in.

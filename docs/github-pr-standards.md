@@ -71,6 +71,21 @@ Exception: a PR with a **single commit** may use that commit's message 1:1 as
 its summary (GitHub pre-fills the description with it). The length limit does
 not apply to such a copy.
 
+## Size
+
+Keep a PR small enough to review in one sitting: **aim for 5 commits or
+fewer, and 10 at most** (merge commits do not count). Split a larger change
+into several PRs and stack them: the first targets `main`, each next one
+targets the branch of the PR below it, so each review shows only its own
+layer. See GitHub's
+[About stacked pull requests](https://docs.github.com/en/pull-requests/get-started/about-stacked-prs)
+(public preview); plain PRs based on each other's branches work the same way.
+
+When a lower PR merges and its branch is deleted, GitHub retargets the PR
+above it to the lower PR's base. After a squash or rebase merge the landed
+commits get new ids, so rebase the upper branch onto the new base
+(`git rebase --onto main <lower-branch>`) before it can merge cleanly.
+
 ## Classification
 
 Change classification is automated, not self-reported, so the PR has no
@@ -110,6 +125,7 @@ a bot, every 10 minutes. Text inside code blocks is ignored.
 | Branch is `<issue>-<desc>` or `u/<user>/<desc>` | [git-standards: Branch naming](./git-standards.md#branch-naming) |
 | Summary covers what the commits do and claims nothing they don't | [Summary](#summary) |
 | Summary has at most 5 paragraphs (not for a single-commit copy) | [Summary](#summary) |
+| At most 10 commits (a tip above 5, a follow-up above 7) | [Size](#size) |
 
 The summary rule is judged by an AI model: the label is set only when the model
 is at least 85% sure; from 50% the finding is listed as a suggestion without

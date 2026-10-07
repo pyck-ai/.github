@@ -1,5 +1,38 @@
 # Agent Protocols
 
+## Hard rules (read every session, never violate)
+
+### Live database access
+
+**NEVER** run `INSERT`, `UPDATE`, `DELETE`, `TRUNCATE`, `ALTER`, `DROP`, or any
+other write SQL against a live database (production, staging, dev, feature
+envs, customer envs: any cluster the user has not explicitly identified as
+local-disposable) without **explicit, prior, per-statement permission** from
+the user.
+
+This includes:
+
+- `kubectl exec ... -- psql ... -c "INSERT ..."`, `UPDATE`, `DELETE`, etc.
+- Any `psql` / `pg_dump` / `pg_restore` invocation that is not strictly read-only.
+- Any tool wrapper (Atlas, Ent, migrate, etc.) that issues writes.
+- Schema-mutating DDL (`CREATE TABLE`, `ALTER TABLE`, `DROP INDEX`, …).
+
+Read-only `SELECT` queries against a live DB are OK; treat them like API GETs.
+
+When you think a write is needed, **stop, describe what you'd write, and ask
+for explicit go-ahead**. Do not assume the surrounding conversation
+greenlights DB writes: API mutations and DB writes are not the same blast
+radius.
+
+If you do violate this rule, **stop immediately**, tell the user clearly,
+and offer to revert (do not auto-revert without permission either).
+
+### `deployment` repo: `task`, never `make`
+
+In the `deployment` repo, never run or recommend `make`. All workflows go through
+go-task (`task`, root `Taskfile.yml`), e.g. `task deploy ENV=<env>`.
+`infrastructure/Makefile` exists but is not the supported path; use `task` targets.
+
 ## The change lifecycle
 
 Every change flows through the same pipeline, and each artifact has exactly **one job**:

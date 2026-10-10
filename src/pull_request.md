@@ -28,9 +28,9 @@ applicable) and the tests the change requires are added or updated. Marking a
 PR ready is the author's confirmation that this testing is done, and reviewers
 should treat it that way.
 
-There are no checkboxes. Classification (defect fix, feature, task, breaking
-change, tests) is automatic: on repos that opt in, pyck-review classifies each
-commit and posts the result as a comment.
+There are no checkboxes. Classification (defect fix, feature or task, plus
+breaking, irreversible and tests added) is automatic: on repos that opt in,
+pyck-review classifies each commit and shows the result in its review.
 ---------------------------------------------------------------------------- -->
 
 ## Additional Information

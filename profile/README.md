@@ -1,5 +1,17 @@
 # Pyck
 
+<!-- toc
+## Contents
+
+- [Why Pyck](#why-pyck)
+- [Pyck is](#pyck-is)
+- [Pyck is not](#pyck-is-not)
+- [Where to start](#where-to-start)
+- [Other public projects](#other-public-projects)
+- [Join us](#join-us)
+- [Community](#community)
+-->
+
 > Pyck is the last warehouse software you will ever need.
 
 The **Pyck Open Source Framework for Warehouse Software** lets you

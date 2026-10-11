@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://docs.pyck.cloud
+    about: Guides and the API reference. Check here before opening an issue.
+  - name: Report a security vulnerability
+    url: https://github.com/pyck-ai/.github/blob/main/.github/SECURITY.md
+    about: Never in a public issue. Follow the security policy instead.
+  - name: Other questions
+    url: https://pyck.ai
+    about: For anything that is not a defect, feature or task, email hello@pyck.ai.

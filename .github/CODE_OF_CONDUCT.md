@@ -1,6 +1,19 @@
 # Code of Conduct
 
+<!-- toc
+## Contents
+
+- [Our Commitment](#our-commitment)
+- [Responsibilities](#responsibilities)
+- [Our Standards](#our-standards)
+- [Unacceptable Behavior](#unacceptable-behavior)
+- [Reporting Guidelines](#reporting-guidelines)
+- [Enforcement Process](#enforcement-process)
+- [Scope](#scope)
+-->
+
 ## Our Commitment
+
 Our project is committed to fostering an open, inclusive, and respectful
 community for everyone. We believe in treating all individuals with fairness and
 equality, creating an environment where every human is valued and can
@@ -9,13 +22,16 @@ consequences for violations, ensuring a safe and productive space for all
 participants.
 
 ## Responsibilities
+
 Project maintainers are responsible for **enforcing these standards fairly and
 consistently**, clarifying expectations, and taking appropriate, proportionate
 action in response to unacceptable behavior. They are committed to fostering a
 safe and respectful environment.
 
 ## Our Standards
+
 To maintain a positive and productive community, we expect all members to:
+
 * **Be Respectful and Empathetic:** Engage politely, professionally, and
   empathetically, valuing every individual's perspectives and experiences.
   Always remember there's a human behind every interaction.
@@ -33,7 +49,9 @@ To maintain a positive and productive community, we expect all members to:
   opportunity to contribute.
 
 ## Unacceptable Behavior
+
 The following actions are strictly prohibited and will not be tolerated:
+
 * **Harassment:** This includes offensive comments (e.g., related to age,
   identity, physical appearance, or any other personal attribute), sexualized
   imagery, deliberate intimidation, stalking, unwelcome attention, or any
@@ -50,9 +68,11 @@ The following actions are strictly prohibited and will not be tolerated:
   engage in any of the unacceptable behaviors listed above.
 
 ## Reporting Guidelines
+
 If you witness or experience unacceptable behavior, please report it immediately
 and discreetly to ensure a prompt and fair resolution.
-* **How to Report:** Contact our dedicated team via conduct@pyck.ai or directly
+
+* **How to Report:** Contact our dedicated team via <conduct@pyck.ai> or directly
   message a project maintainer.
 * **What to Include:** Please provide details such as the names or aliases of
   those involved, a description of the incident (what, when, where), and any
@@ -65,7 +85,9 @@ and discreetly to ensure a prompt and fair resolution.
   their side, and actions taken will be proportionate to the violation.
 
 ## Enforcement Process
+
 Upon receiving a report, our team will:
+
 * **Investigate Thoroughly:** Review the incident, gather necessary information,
   and ensure all parties can provide their perspective.
 * **Determine Action:** Based on findings, apply appropriate consequences, which
@@ -79,6 +101,7 @@ Upon receiving a report, our team will:
   code, etc.) that violates this Code of Conduct.
 
 ## Scope
+
 This Code of Conduct applies within project spaces and in public spaces when
 representing the project.
 

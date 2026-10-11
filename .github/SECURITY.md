@@ -1,5 +1,14 @@
 # Security Policy
 
+<!-- toc
+## Contents
+
+- [Reporting Security Vulnerabilities](#reporting-security-vulnerabilities)
+- [How to Report a Vulnerability](#how-to-report-a-vulnerability)
+- [Disclosure Policy](#disclosure-policy)
+- [Comments on this Policy](#comments-on-this-policy)
+-->
+
 ## Reporting Security Vulnerabilities
 
 We take the security of pyck.ai seriously. If you believe you have found a
@@ -10,14 +19,17 @@ report it to us as described below.
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them via email to:
+Instead, report them privately in one of two ways:
 
-📧 **security@pyck.ai**
+- **On GitHub** (public repositories): open the repository's **Security** tab
+  and click **Report a vulnerability**. Only the maintainers see the report.
+- **By email** (any repository): 📧 **<security@pyck.ai>**
 
 You should receive an acknowledgment within 72 hours. If for some reason you do
 not, please follow up via email to ensure we received your original message.
 
 Please include the following information in your report:
+
 - Type of issue (e.g., buffer overflow, SQL injection, cross-site scripting, etc.)
 - Full paths of source file(s) related to the manifestation of the issue
 - The location of the affected source code (tag/branch/commit or direct URL)
@@ -40,4 +52,4 @@ We follow a coordinated disclosure policy:
 ## Comments on this Policy
 
 If you have suggestions on how this process could be improved, please submit a
-pull request or email security@pyck.ai.
+pull request or email <security@pyck.ai>.

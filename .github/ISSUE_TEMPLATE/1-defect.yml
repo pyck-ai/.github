@@ -30,9 +30,8 @@ body:
         Example:
 
         The createInventoryItem mutation fails with a validation error when
-        using valid SKU formats. According to the GraphQL API documentation
-        (https://docs.pyck.cloud/graphql-api/mutations/create-inventory-item),
-        SKUs should support alphanumeric characters with optional hyphens and
+        using valid SKU formats. According to the GraphQL API documentation of
+        createInventoryItem, SKUs should support alphanumeric characters with optional hyphens and
         underscores, but the mutation consistently rejects SKUs containing
         hyphens with "Invalid SKU format" errors.
 

@@ -18,8 +18,8 @@ Closes: #123
 Part-of: #456
 See-also: #789
 
-See https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue
-for more.
+The Footer section of the org git guideline (docs/git.md in
+pyck-ai/guidelines) explains each trailer.
 ---------------------------------------------------------------------------- -->
 
 <!-- ---------------------------------------------------------------------------

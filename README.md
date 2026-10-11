@@ -25,8 +25,11 @@ Out of the box, pyck-ai/.github includes:
 
 - **Issue forms**: `.github/ISSUE_TEMPLATE/{1-defect,2-feature,3-task}.yml`,
   edited in place, and the issue chooser's links in
-  `.github/ISSUE_TEMPLATE/config.yml`.
-- **PR template**: `.github/PULL_REQUEST_TEMPLATE.md`, edited in place.
+  `.github/ISSUE_TEMPLATE/config.yml`. How to fill them in:
+  [issues](https://github.com/pyck-ai/guidelines/blob/main/docs/issues.md).
+- **PR template**: `.github/PULL_REQUEST_TEMPLATE.md`, edited in place. How to
+  fill it in:
+  [pull requests](https://github.com/pyck-ai/guidelines/blob/main/docs/pull-requests.md).
 - **Community files**: [`.github/CODE_OF_CONDUCT.md`](./.github/CODE_OF_CONDUCT.md),
   [`.github/CONTRIBUTING.md`](./.github/CONTRIBUTING.md),
   [`.github/SUPPORT.md`](./.github/SUPPORT.md) and
@@ -57,6 +60,8 @@ Prerequisites: [Go](https://go.dev) 1.23 and [Task](https://taskfile.dev). Run
 ## Documentation
 
 - [Badges](./badges/README.md): the badge set and how to link it.
+- [Engineering guidelines](https://github.com/pyck-ai/guidelines): commits,
+  pull requests, issues, READMEs and code review, for people and coding agents.
 
 ## Contributing
 

@@ -1,5 +1,7 @@
 # pyck-ai/.github
 
+Org-wide rules: `~/.pyck/guidelines/AGENTS.md`. They apply here; this file adds only local facts. If that path is missing, ask the user to install pyck-ai/guidelines (clone it and run its `setup.sh`); never fetch the rules from the web.
+
 Org-wide GitHub defaults plus the badge generator. See [README.md](README.md).
 
 ## Commands

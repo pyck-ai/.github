@@ -1,0 +1,6 @@
+# Temporary stubs that only link to pyck-ai/guidelines; a table of contents
+# would just repeat their headings. Removed with the stubs on 2026-12-31.
+git-standards.md
+github-pr-standards.md
+github-issue-standards.md
+agent-protocols.md

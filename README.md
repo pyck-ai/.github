@@ -1,5 +1,11 @@
 # pyck-ai/.github
 
+> [!WARNING]
+> The engineering guidelines moved to
+> [pyck-ai/guidelines](https://github.com/pyck-ai/guidelines). See the
+> [migration notes](https://github.com/pyck-ai/guidelines/blob/main/docs/migration-from-dotgithub.md)
+> for what changes for you. This notice is removed on 2026-12-31.
+
 <!-- toc
 ## Contents
 

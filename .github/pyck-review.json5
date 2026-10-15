@@ -1,0 +1,5 @@
+// This repository's pyck-review settings. See pyck-ai/pyck-review
+// docs/configuration.md for what reads this file and what the presets set.
+{
+  extends: ["recommended"],
+}

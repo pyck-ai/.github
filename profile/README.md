@@ -16,10 +16,10 @@
 </p>
 
 <p align="center">
-  <a href="https://pyck.ai"><img alt="IFOY Award 2026, Startup of the Year" src="https://img.shields.io/badge/IFOY%20Award%202026-Startup%20of%20the%20Year-FCFE06?style=flat-square&labelColor=1B1B21"></a>
-  <img alt="Open source core" src="https://img.shields.io/badge/core-open%20source-19FFF6?style=flat-square&labelColor=1B1B21">
-  <img alt="ISO 27001 and ISO 9001" src="https://img.shields.io/badge/ISO-27001%20%C2%B7%209001-03B0E9?style=flat-square&labelColor=1B1B21">
-  <img alt="Remote-first" src="https://img.shields.io/badge/team-remote--first-6F2F9F?style=flat-square&labelColor=1B1B21">
+  <a href="https://pyck.ai/pyck-wins-ifoy-award-2026-startup-of-the-year"><img alt="IFOY Award 2026, Startup of the Year" src="https://img.shields.io/badge/ifoy%20award%202026-startup%20of%20the%20year-FCFE06"></a>
+  <a href="https://github.com/pyck-ai/pyck-oss"><img alt="Open source core" src="https://img.shields.io/badge/core-open%20source-19FFF6"></a>
+  <a href="https://pyck.ai/product#certified"><img alt="ISO 27001 and ISO 9001" src="https://img.shields.io/badge/iso-27001%20%C2%B7%209001-03B0E9"></a>
+  <a href="https://pyck.ai/jobs"><img alt="Remote-first team" src="https://img.shields.io/badge/team-remote--first-6F2F9F"></a>
 </p>
 
 <table>

@@ -38,6 +38,16 @@ Critical is filled with white text; the others are outlines. Width 62, height 18
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./severity/low-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./severity/low-light.svg"><img alt="Low severity" src="./severity/low-light.svg" width="62" height="18" align="texttop"></picture> | `severity/low` | Low severity |
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./severity/info-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./severity/info-light.svg"><img alt="Info severity" src="./severity/info-light.svg" width="62" height="18" align="texttop"></picture> | `severity/info` | Info severity |
 
+## Risk
+
+Change risk, used by the risk bot (pyck-triage); the colours and width are those of the severity badges. Width 62, height 18.
+
+| Badge | Path (without `-<mode>.svg`) | Title |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./risk/high-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./risk/high-light.svg"><img alt="High risk" src="./risk/high-light.svg" width="62" height="18" align="texttop"></picture> | `risk/high` | High risk |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./risk/medium-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./risk/medium-light.svg"><img alt="Medium risk" src="./risk/medium-light.svg" width="62" height="18" align="texttop"></picture> | `risk/medium` | Medium risk |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./risk/low-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./risk/low-light.svg"><img alt="Low risk" src="./risk/low-light.svg" width="62" height="18" align="texttop"></picture> | `risk/low` | Low risk |
+
 ## Status
 
 Lifecycle of a finding. Width 47, height 18.

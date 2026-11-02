@@ -463,6 +463,9 @@ func buildGroups() []group {
 	sev := func(name, label string, p palette, filled bool) badge {
 		return badge{"severity", name, label, label + " severity", fixedColour(p), filled}
 	}
+	risk := func(name, label string, p palette) badge {
+		return badge{"risk", name, label, label + " risk", fixedColour(p), false}
+	}
 	simple := func(grp, prefix, name, label string, p palette) badge {
 		return badge{grp, strings.ToLower(name), label, prefix + label, fixedColour(p), false}
 	}
@@ -486,6 +489,13 @@ func buildGroups() []group {
 				sev("medium", "Medium", yellow, false),
 				sev("low", "Low", blue, false),
 				sev("info", "Info", grey, false),
+			}},
+		{name: "risk", heading: "Risk", shareWith: "Critical",
+			about: "Change risk, used by the risk bot (pyck-triage); the colours and width are those of the severity badges.",
+			badges: []badge{
+				risk("high", "High", red),
+				risk("medium", "Medium", yellow),
+				risk("low", "Low", blue),
 			}},
 		{name: "status", heading: "Status", about: "Lifecycle of a finding.",
 			badges: []badge{

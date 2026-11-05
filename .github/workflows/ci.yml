@@ -13,7 +13,7 @@ permissions: {}
 
 jobs:
   ci:
-    runs-on: self-hosted-kata
+    runs-on: [pyck-ai, firecracker, light]
     permissions:
       contents: read # checkout
     steps:
@@ -24,7 +24,7 @@ jobs:
   ci-success:
     needs: [ci]
     if: always()
-    runs-on: self-hosted-kata
+    runs-on: [pyck-ai, firecracker, light]
     permissions: {}
     steps:
       - uses: pyck-ai/github-actions/gate@04c6f5cd724c6c65a2c2a613f4a97111bbf6347f # main 2026-10-15

@@ -48,6 +48,26 @@ Change risk, used by the risk bot (pyck-triage); the colours and width are those
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./risk/medium-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./risk/medium-light.svg"><img alt="Medium risk" src="./risk/medium-light.svg" width="62" height="18" align="texttop"></picture> | `risk/medium` | Medium risk |
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./risk/low-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./risk/low-light.svg"><img alt="Low risk" src="./risk/low-light.svg" width="62" height="18" align="texttop"></picture> | `risk/low` | Low risk |
 
+## Severity level
+
+The values of the org field Severity, used by pyck-triage; the colours are those of the severity badges and the width is shared with the Change Risk level badges. Width 100, height 18.
+
+| Badge | Path (without `-<mode>.svg`) | Title |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./sev/sev-1-high-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./sev/sev-1-high-light.svg"><img alt="SEV-1 High" src="./sev/sev-1-high-light.svg" width="100" height="18" align="texttop"></picture> | `sev/sev-1-high` | SEV-1 High |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./sev/sev-2-medium-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./sev/sev-2-medium-light.svg"><img alt="SEV-2 Medium" src="./sev/sev-2-medium-light.svg" width="100" height="18" align="texttop"></picture> | `sev/sev-2-medium` | SEV-2 Medium |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./sev/sev-3-low-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./sev/sev-3-low-light.svg"><img alt="SEV-3 Low" src="./sev/sev-3-low-light.svg" width="100" height="18" align="texttop"></picture> | `sev/sev-3-low` | SEV-3 Low |
+
+## Change Risk level
+
+The values of the org field Change Risk, used by pyck-triage; the colours are those of the risk badges and the width is shared with the Severity level badges. Width 100, height 18.
+
+| Badge | Path (without `-<mode>.svg`) | Title |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./cr/cr-1-high-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./cr/cr-1-high-light.svg"><img alt="CR-1 High" src="./cr/cr-1-high-light.svg" width="100" height="18" align="texttop"></picture> | `cr/cr-1-high` | CR-1 High |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./cr/cr-2-medium-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./cr/cr-2-medium-light.svg"><img alt="CR-2 Medium" src="./cr/cr-2-medium-light.svg" width="100" height="18" align="texttop"></picture> | `cr/cr-2-medium` | CR-2 Medium |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./cr/cr-3-low-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./cr/cr-3-low-light.svg"><img alt="CR-3 Low" src="./cr/cr-3-low-light.svg" width="100" height="18" align="texttop"></picture> | `cr/cr-3-low` | CR-3 Low |
+
 ## Status
 
 Lifecycle of a finding. Width 47, height 18.

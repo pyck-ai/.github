@@ -466,6 +466,9 @@ func buildGroups() []group {
 	risk := func(name, label string, p palette) badge {
 		return badge{"risk", name, label, label + " risk", fixedColour(p), false}
 	}
+	level := func(grp, name, label string, p palette) badge {
+		return badge{grp, name, label, label, fixedColour(p), false}
+	}
 	simple := func(grp, prefix, name, label string, p palette) badge {
 		return badge{grp, strings.ToLower(name), label, prefix + label, fixedColour(p), false}
 	}
@@ -497,6 +500,20 @@ func buildGroups() []group {
 				risk("high", "High", red),
 				risk("medium", "Medium", yellow),
 				risk("low", "Low", blue),
+			}},
+		{name: "sev", heading: "Severity level", shareWith: "SEV-2 Medium",
+			about: "The values of the org field Severity, used by pyck-triage; the colours are those of the severity badges and the width is shared with the Change Risk level badges.",
+			badges: []badge{
+				level("sev", "sev-1-high", "SEV-1 High", red),
+				level("sev", "sev-2-medium", "SEV-2 Medium", yellow),
+				level("sev", "sev-3-low", "SEV-3 Low", blue),
+			}},
+		{name: "cr", heading: "Change Risk level", shareWith: "SEV-2 Medium",
+			about: "The values of the org field Change Risk, used by pyck-triage; the colours are those of the risk badges and the width is shared with the Severity level badges.",
+			badges: []badge{
+				level("cr", "cr-1-high", "CR-1 High", red),
+				level("cr", "cr-2-medium", "CR-2 Medium", yellow),
+				level("cr", "cr-3-low", "CR-3 Low", blue),
 			}},
 		{name: "status", heading: "Status", about: "Lifecycle of a finding.",
 			badges: []badge{

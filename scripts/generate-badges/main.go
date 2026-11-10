@@ -18,7 +18,9 @@
 // downloaded at generate time from a pinned commit of github/mona-sans, sha256
 // verified, and cached under the user cache dir. The font is not committed.
 // Size 12 px with 0.17 px tracking reproduces Copilot's "High", "Low" and
-// "Medium" ink boxes to within 0.04 px.
+// "Medium" ink boxes to within 0.04 px. The top row of the split blocks (the
+// triage level badges) uses Mona Sans Bold from the same commit, also pinned
+// and sha256 verified.
 //
 // Run it from the repo root (the Taskfile does this):
 //
@@ -55,6 +57,10 @@ const (
 	fontPath   = "fonts/static/ttf/MonaSans-SemiBold.ttf"
 	fontSHA256 = "67636cd715fc8637df3d0f215f478af37924fa3f2c9ee0d3ed8f3147211811f2"
 
+	// Bold, for the top row of the split blocks, from the same commit.
+	boldPath   = "fonts/static/ttf/MonaSans-Bold.ttf"
+	boldSHA256 = "5ccaea90ac9d61a1503efb7b138bf4440313e7214432bdaa584189aba177e807"
+
 	rawBase = "https://raw.githubusercontent.com/pyck-ai/.github/main/badges"
 
 	fontSize  = 12.0 // px; SemiBold at 12 px matches Copilot's cap height (8.748) and stem
@@ -67,6 +73,17 @@ const (
 	darkBG    = "#0d1117"
 	lightBG   = "#ffffff"
 	white     = "#ffffff"
+
+	// Split block (design B): 52 x 32, a filled top row (0..16) with the
+	// level tag in white Bold and an outlined bottom row with the word in
+	// SemiBold. The baselines are fixed so every word sits on the same line.
+	blockW        = 52
+	blockH        = 32
+	blockTopSize  = 10.0 // px, Bold
+	blockTopTrack = 0.2  // px
+	blockTopBase  = 11.6 // baseline y of the top text
+	blockBotSize  = 11.0 // px, SemiBold
+	blockBotBase  = 26.6 // baseline y of the bottom text
 )
 
 // ---------------------------------------------------------------------------
@@ -82,6 +99,12 @@ var (
 	blue   = palette{"#0969da", "#4493f8"}
 	green  = palette{"#1a7f37", "#3fb950"}
 	grey   = palette{"#59636e", "#9198a1"}
+
+	// Fills of the split blocks' top rows: white text on them reaches 4.5:1
+	// (checked at generate time). The text colours are red, yellow and blue.
+	blockRed    = palette{"#cf222e", "#da3633"}
+	blockYellow = palette{"#9a6700", "#9e6a03"}
+	blockBlue   = palette{"#0969da", "#1f6feb"}
 )
 
 func (p palette) mode(m string) string {
@@ -250,8 +273,9 @@ func confidenceColour(pct int, mode string) string {
 
 var fontData []byte
 
-// loadFont returns the pinned font, from the user cache or downloaded.
-func loadFont() (*sfnt.Font, error) {
+// loadFont returns the pinned font file at path whose sha256 is want, from
+// the user cache or downloaded.
+func loadFont(fontPath, want string) (*sfnt.Font, error) {
 	cacheRoot, err := os.UserCacheDir()
 	if err != nil {
 		return nil, err
@@ -261,7 +285,7 @@ func loadFont() (*sfnt.Font, error) {
 
 	ok := func(b []byte) bool {
 		sum := sha256.Sum256(b)
-		return hex.EncodeToString(sum[:]) == fontSHA256
+		return hex.EncodeToString(sum[:]) == want
 	}
 	b, err := os.ReadFile(file)
 	if err != nil || !ok(b) {
@@ -327,10 +351,11 @@ func quadExtreme(p0, p1, p2 float64) float64 {
 	return t
 }
 
-func layout(ft *sfnt.Font, s string) (text, error) {
+// layout lays s out at size px with track px added between glyphs.
+func layout(ft *sfnt.Font, s string, size, track float64) (text, error) {
 	var buf sfnt.Buffer
 	upm := fixedPPEM(ft)
-	scale := fontSize / float64(ft.UnitsPerEm())
+	scale := size / float64(ft.UnitsPerEm())
 	t := text{minX: math.Inf(1), minY: math.Inf(1), maxX: math.Inf(-1), maxY: math.Inf(-1)}
 	grow := func(x, y float64) {
 		t.minX, t.maxX = math.Min(t.minX, x), math.Max(t.maxX, x)
@@ -348,7 +373,7 @@ func layout(ft *sfnt.Font, s string) (text, error) {
 			if err == nil {
 				pen += float64(k) / 64 * scale
 			}
-			pen += tracking
+			pen += track
 		}
 		segs, err := ft.LoadGlyph(&buf, g, upm, nil)
 		if err != nil {
@@ -456,12 +481,32 @@ type badge struct {
 	filled      bool // filled pill with white text (Critical)
 }
 
+// blockBadge is a split block (design B): label is the word in the bottom row
+// (drawn in colour), top the tag in the top row, fill the top row's colour.
+type blockBadge struct {
+	badge
+	top  string
+	fill func(mode string) string
+}
+
 type group struct {
 	name, heading, about string
 	badges               []badge
 	// shareWith, when non-empty, is a label whose width every badge shares
 	// (at least).
 	shareWith string
+	// blocks, instead of badges, is a group of split blocks, drawn at
+	// blockW x blockH.
+	blocks []blockBadge
+}
+
+// listed returns the badges of a group, whichever kind it holds.
+func (g group) listed() []badge {
+	out := append([]badge{}, g.badges...)
+	for _, b := range g.blocks {
+		out = append(out, b.badge)
+	}
+	return out
 }
 
 func fixedColour(p palette) func(string) string { return func(m string) string { return p.mode(m) } }
@@ -478,6 +523,10 @@ func buildGroups() []group {
 	}
 	simple := func(grp, prefix, name, label string, p palette) badge {
 		return badge{grp, strings.ToLower(name), label, prefix + label, fixedColour(p), false}
+	}
+	// block is a split block: top is the tag ("SEV-1"), word the level's word.
+	block := func(grp, name, top, word string, text, fill palette) blockBadge {
+		return blockBadge{badge{grp, name, word, top + " " + word, fixedColour(text), false}, top, fixedColour(fill)}
 	}
 	var conf []badge
 	// 5% steps: finer steps are not readable apart, and callers round to the
@@ -521,6 +570,20 @@ func buildGroups() []group {
 				level("cr", "cr-1-high", "CR-1 High", red),
 				level("cr", "cr-2-medium", "CR-2 Medium", yellow),
 				level("cr", "cr-3-low", "CR-3 Low", blue),
+			}},
+		{name: "sev-block", heading: "Severity level, split block",
+			about: "Design B, split block: used by the triage level usage paths. The tag sits in a filled top row, the word in the outlined bottom row; the colours are those of the Severity level badges.",
+			blocks: []blockBadge{
+				block("sev-block", "sev-1-high", "SEV-1", "High", red, blockRed),
+				block("sev-block", "sev-2-medium", "SEV-2", "Medium", yellow, blockYellow),
+				block("sev-block", "sev-3-low", "SEV-3", "Low", blue, blockBlue),
+			}},
+		{name: "cr-block", heading: "Change Risk level, split block",
+			about: "Design B, split block: used by the triage level usage paths. The tag sits in a filled top row, the word in the outlined bottom row; the colours are those of the Change Risk level badges.",
+			blocks: []blockBadge{
+				block("cr-block", "cr-1-high", "CR-1", "High", red, blockRed),
+				block("cr-block", "cr-2-medium", "CR-2", "Medium", yellow, blockYellow),
+				block("cr-block", "cr-3-low", "CR-3", "Low", blue, blockBlue),
 			}},
 		{name: "status", heading: "Status", about: "Lifecycle of a finding.",
 			badges: []badge{
@@ -584,9 +647,9 @@ func confidenceSlots(extra ...string) []slot {
 // usageSpecs is the one table of usage paths. Only slots a user emits today;
 // a new meaning is a new slot here plus a change in the user.
 var usageSpecs = []usageSpec{
-	{"triage/comment/severity", []slot{{"high", "sev/sev-1-high"}, {"medium", "sev/sev-2-medium"}, {"low", "sev/sev-3-low"}}},
-	{"triage/comment/risk", []slot{{"high", "cr/cr-1-high"}, {"medium", "cr/cr-2-medium"}, {"low", "cr/cr-3-low"}}},
-	{"triage/dashboard/severity", []slot{{"high", "sev/sev-1-high"}, {"medium", "sev/sev-2-medium"}, {"low", "sev/sev-3-low"}}},
+	{"triage/comment/severity", []slot{{"high", "sev-block/sev-1-high"}, {"medium", "sev-block/sev-2-medium"}, {"low", "sev-block/sev-3-low"}}},
+	{"triage/comment/risk", []slot{{"high", "cr-block/cr-1-high"}, {"medium", "cr-block/cr-2-medium"}, {"low", "cr-block/cr-3-low"}}},
+	{"triage/dashboard/severity", []slot{{"high", "sev-block/sev-1-high"}, {"medium", "sev-block/sev-2-medium"}, {"low", "sev-block/sev-3-low"}}},
 	{"triage/dashboard/confidence", confidenceSlots("na", "rule")},
 	{"review/findings/severity", sameAs("severity", "high", "medium", "low")},
 	{"review/findings/status", sameAs("status", "fixed")},
@@ -608,7 +671,7 @@ func groupWidth(ft *sfnt.Font, g group) (int, error) {
 	}
 	w := 0.0
 	for _, l := range labels {
-		t, err := layout(ft, l)
+		t, err := layout(ft, l, fontSize, tracking)
 		if err != nil {
 			return 0, err
 		}
@@ -623,7 +686,7 @@ func xmlEscape(s string) string {
 
 // renderSVG returns one badge for a mode at the given width.
 func renderSVG(ft *sfnt.Font, b badge, mode string, width int, fill string) (string, error) {
-	t, err := layout(ft, b.label)
+	t, err := layout(ft, b.label, fontSize, tracking)
 	if err != nil {
 		return "", err
 	}
@@ -646,6 +709,34 @@ func renderSVG(ft *sfnt.Font, b badge, mode string, width int, fill string) (str
 	return sb.String(), nil
 }
 
+// renderBlock returns one split block (design B) for a mode: the top row
+// filled with the tag in white (bold), the whole block outlined, the word in
+// the bottom row (semibold). Both texts are centred horizontally on their ink
+// box and sit on the fixed baselines blockTopBase and blockBotBase.
+func renderBlock(semi, bold *sfnt.Font, b blockBadge, mode string) (string, error) {
+	top, err := layout(bold, b.top, blockTopSize, blockTopTrack)
+	if err != nil {
+		return "", err
+	}
+	bot, err := layout(semi, b.label, blockBotSize, tracking)
+	if err != nil {
+		return "", err
+	}
+	mid := float64(blockW) / 2
+	fill := b.fill(mode)
+	var sb strings.Builder
+	fmt.Fprintf(&sb, `<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d" role="img" aria-label="%s">`+"\n",
+		blockW, blockH, blockW, blockH, xmlEscape(b.title))
+	fmt.Fprintf(&sb, "  <!-- Code generated by %s; DO NOT EDIT. -->\n", generator)
+	fmt.Fprintf(&sb, "  <title>%s</title>\n", xmlEscape(b.title))
+	fmt.Fprintf(&sb, `  <path d="M0 5A5 5 0 0 1 5 0H%dA5 5 0 0 1 %d 5V16H0Z" fill="%s"/>`+"\n", blockW-5, blockW, fill)
+	fmt.Fprintf(&sb, `  <rect x=".5" y=".5" width="%d" height="%d" rx="4.5" fill="none" stroke="%s"/>`+"\n", blockW-1, blockH-1, fill)
+	fmt.Fprintf(&sb, `  <path fill="%s" d="%s"/>`+"\n", white, top.pathData(mid-(top.minX+top.maxX)/2, blockTopBase))
+	fmt.Fprintf(&sb, `  <path fill="%s" d="%s"/>`+"\n", b.colour(mode), bot.pathData(mid-(bot.minX+bot.maxX)/2, blockBotBase))
+	sb.WriteString("</svg>\n")
+	return sb.String(), nil
+}
+
 // filledBackground returns the fill for a filled badge: the mode's colour if
 // white text on it reaches 4.5:1, else the light-mode colour.
 func filledBackground(b badge, mode string) string {
@@ -659,7 +750,7 @@ func filledBackground(b badge, mode string) string {
 // ---------------------------------------------------------------------------
 // Gallery
 
-func picture(rel string, b badge, width int) string {
+func picture(rel string, b badge, width, height int) string {
 	u := rel + "/" + b.group + "/" + b.name
 	return fmt.Sprintf(`<picture><source media="(prefers-color-scheme: dark)" srcset="%s-dark.svg"><source media="(prefers-color-scheme: light)" srcset="%s-light.svg"><img alt="%s" src="%s-light.svg" width="%d" height="%d" align="texttop"></picture>`,
 		u, u, xmlEscape(b.title), u, width, height)
@@ -703,12 +794,12 @@ func slotDesigns(slots []slot) string {
 	return strings.Join(out, ", ")
 }
 
-func gallery(groups []group, widths map[string]int) string {
+func gallery(groups []group, widths, heights map[string]int) string {
 	var sb strings.Builder
 	fmt.Fprintf(&sb, "<!-- Code generated by %s; DO NOT EDIT. -->\n\n", generator)
 	sb.WriteString("# Badges\n\n")
 	sb.WriteString("Static outline badges in the look of GitHub Copilot's severity badges, for comments and docs.\n")
-	sb.WriteString("Text is glyph outlines (Mona Sans SemiBold), so they render the same everywhere. Each badge has a light and a dark SVG.\n")
+	sb.WriteString("Text is glyph outlines (Mona Sans SemiBold; Bold for the tag of the split blocks), so they render the same everywhere. Each badge has a light and a dark SVG.\n")
 	sb.WriteString("Generated by [`" + generator + "`](../" + generator + "); regenerate with `task generate`.\n\n")
 	sb.WriteString("## Use\n\n")
 	sb.WriteString("Link a badge by the usage it has in your code (`<mode>` is `light` or `dark`):\n\n")
@@ -731,14 +822,14 @@ func gallery(groups []group, widths map[string]int) string {
 	}
 	sb.WriteString("\n")
 	for _, g := range groups {
-		fmt.Fprintf(&sb, "## %s\n\n%s Width %d, height %d.\n\n", g.heading, g.about, widths[g.name], height)
+		fmt.Fprintf(&sb, "## %s\n\n%s Width %d, height %d.\n\n", g.heading, g.about, widths[g.name], heights[g.name])
 		if g.name == "confidence" {
 			sb.WriteString("|" + strings.Repeat(" |", gridWidth) + "\n|" + strings.Repeat("---|", gridWidth) + "\n")
 			for i := 0; i < len(g.badges); i += gridWidth {
 				sb.WriteString("|")
 				for j := i; j < i+gridWidth; j++ {
 					if j < len(g.badges) {
-						sb.WriteString(" " + picture(".", g.badges[j], widths[g.name]))
+						sb.WriteString(" " + picture(".", g.badges[j], widths[g.name], heights[g.name]))
 					}
 					sb.WriteString(" |")
 				}
@@ -748,8 +839,8 @@ func gallery(groups []group, widths map[string]int) string {
 			continue
 		}
 		sb.WriteString("| Badge | Path (without `-<mode>.svg`) | Title |\n|---|---|---|\n")
-		for _, b := range g.badges {
-			fmt.Fprintf(&sb, "| %s | `%s/%s` | %s |\n", picture(".", b, widths[g.name]), b.group, b.name, b.title)
+		for _, b := range g.listed() {
+			fmt.Fprintf(&sb, "| %s | `%s/%s` | %s |\n", picture(".", b, widths[g.name], heights[g.name]), b.group, b.name, b.title)
 		}
 		sb.WriteString("\n")
 	}
@@ -773,23 +864,44 @@ func main() {
 }
 
 func run(check bool) error {
-	ft, err := loadFont()
+	ft, err := loadFont(fontPath, fontSHA256)
+	if err != nil {
+		return err
+	}
+	bold, err := loadFont(boldPath, boldSHA256)
 	if err != nil {
 		return err
 	}
 	groups := buildGroups()
 	files := map[string]string{} // path -> content
 	widths := map[string]int{}
+	heights := map[string]int{}
 	minContrast := map[string]float64{"light": math.Inf(1), "dark": math.Inf(1)}
 	minName := map[string]string{}
 	bgs := map[string]string{"light": lightBG, "dark": darkBG}
 
 	for _, g := range groups {
+		if len(g.blocks) > 0 {
+			widths[g.name], heights[g.name] = blockW, blockH
+			for _, b := range g.blocks {
+				for _, mode := range []string{"light", "dark"} {
+					if c := contrast(white, b.fill(mode)); c < 4.5 {
+						return fmt.Errorf("%s/%s %s: white text contrast %.2f < 4.5 on %s", b.group, b.name, mode, c, b.fill(mode))
+					}
+					svg, err := renderBlock(ft, bold, b, mode)
+					if err != nil {
+						return fmt.Errorf("%s/%s: %w", b.group, b.name, err)
+					}
+					files[filepath.Join(outDir, b.group, b.name+"-"+mode+".svg")] = svg
+				}
+			}
+			continue
+		}
 		w, err := groupWidth(ft, g)
 		if err != nil {
 			return err
 		}
-		widths[g.name] = w
+		widths[g.name], heights[g.name] = w, height
 		for _, b := range g.badges {
 			for _, mode := range []string{"light", "dark"} {
 				fill := ""
@@ -824,7 +936,7 @@ func run(check bool) error {
 			}
 		}
 	}
-	files[filepath.Join(outDir, "README.md")] = gallery(groups, widths)
+	files[filepath.Join(outDir, "README.md")] = gallery(groups, widths, heights)
 
 	// Existing generated files that are no longer expected are stale.
 	var stale []string

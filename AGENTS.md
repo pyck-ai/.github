@@ -13,4 +13,4 @@ Org-wide GitHub defaults plus the badge generator. See [README.md](README.md).
 
 - The issue forms and the PR template are edited in place; nothing generates them.
 - Everything under `.github/` applies to every pyck-ai repo without its own copy, so review a change there as an org-wide change.
-- `badges/*.svg` and `badges/README.md` are generated; never hand-edit them.
+- Every `badges/**/*.svg` (the groups and the usage paths) and `badges/README.md` are generated; never hand-edit them.

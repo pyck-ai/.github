@@ -35,8 +35,8 @@ The files are copies of the designs below, written by the generator; the content
 
 | Usage path (under `badges/`) | Slots | Drawn as |
 |---|---|---|
-| `triage/comment/severity/` | `high`, `medium`, `low` | `sev-block/sev-1-high`, `sev-block/sev-2-medium`, `sev-block/sev-3-low` |
-| `triage/comment/risk/` | `high`, `medium`, `low` | `cr-block/cr-1-high`, `cr-block/cr-2-medium`, `cr-block/cr-3-low` |
+| `triage/comment/severity/` | `high`, `medium`, `low`, `unrated`, `failed` | `sev-block/sev-1-high`, `sev-block/sev-2-medium`, `sev-block/sev-3-low`, `sev-placeholder/unrated`, `sev-placeholder/failed` |
+| `triage/comment/risk/` | `high`, `medium`, `low`, `unrated`, `failed` | `cr-block/cr-1-high`, `cr-block/cr-2-medium`, `cr-block/cr-3-low`, `cr-placeholder/unrated`, `cr-placeholder/failed` |
 | `triage/dashboard/severity/` | `high`, `medium`, `low` | `sev-block/sev-1-high`, `sev-block/sev-2-medium`, `sev-block/sev-3-low` |
 | `triage/dashboard/confidence/` | `0`, `5`, ..., `100`, `na`, `rule` | `confidence/<slot>` |
 | `review/findings/severity/` | `high`, `medium`, `low` | `severity/<slot>` |
@@ -106,6 +106,24 @@ Design B, split block: used by the triage level usage paths. The tag sits in a f
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./cr-block/cr-1-high-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./cr-block/cr-1-high-light.svg"><img alt="CR-1 High" src="./cr-block/cr-1-high-light.svg" width="52" height="32" align="texttop"></picture> | `cr-block/cr-1-high` | CR-1 High |
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./cr-block/cr-2-medium-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./cr-block/cr-2-medium-light.svg"><img alt="CR-2 Medium" src="./cr-block/cr-2-medium-light.svg" width="52" height="32" align="texttop"></picture> | `cr-block/cr-2-medium` | CR-2 Medium |
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./cr-block/cr-3-low-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./cr-block/cr-3-low-light.svg"><img alt="CR-3 Low" src="./cr-block/cr-3-low-light.svg" width="52" height="32" align="texttop"></picture> | `cr-block/cr-3-low` | CR-3 Low |
+
+## Severity placeholder, split block
+
+Design B, split block: shown instead of a Severity level while the rating is not made (`?`) or failed (`!`). The tag sits in a grey top row without a level number; the symbol is Bold. Width 52, height 32.
+
+| Badge | Path (without `-<mode>.svg`) | Title |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./sev-placeholder/unrated-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./sev-placeholder/unrated-light.svg"><img alt="SEV not rated" src="./sev-placeholder/unrated-light.svg" width="52" height="32" align="texttop"></picture> | `sev-placeholder/unrated` | SEV not rated |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./sev-placeholder/failed-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./sev-placeholder/failed-light.svg"><img alt="SEV rating failed" src="./sev-placeholder/failed-light.svg" width="52" height="32" align="texttop"></picture> | `sev-placeholder/failed` | SEV rating failed |
+
+## Change Risk placeholder, split block
+
+Design B, split block: shown instead of a Change Risk level while the rating is not made (`?`) or failed (`!`). The tag sits in a grey top row without a level number; the symbol is Bold. Width 52, height 32.
+
+| Badge | Path (without `-<mode>.svg`) | Title |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./cr-placeholder/unrated-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./cr-placeholder/unrated-light.svg"><img alt="CR not rated" src="./cr-placeholder/unrated-light.svg" width="52" height="32" align="texttop"></picture> | `cr-placeholder/unrated` | CR not rated |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./cr-placeholder/failed-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./cr-placeholder/failed-light.svg"><img alt="CR rating failed" src="./cr-placeholder/failed-light.svg" width="52" height="32" align="texttop"></picture> | `cr-placeholder/failed` | CR rating failed |
 
 ## Status
 

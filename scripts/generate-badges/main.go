@@ -84,6 +84,10 @@ const (
 	blockTopBase  = 11.6 // baseline y of the top text
 	blockBotSize  = 11.0 // px, SemiBold
 	blockBotBase  = 26.6 // baseline y of the bottom text
+
+	// The bottom symbol of a placeholder block ("?" or "!") is Bold, larger.
+	blockSymbolSize = 14.0 // px, Bold
+	blockSymbolBase = 27.4 // baseline y of the symbol
 )
 
 // ---------------------------------------------------------------------------
@@ -105,6 +109,7 @@ var (
 	blockRed    = palette{"#cf222e", "#da3633"}
 	blockYellow = palette{"#9a6700", "#9e6a03"}
 	blockBlue   = palette{"#0969da", "#1f6feb"}
+	blockGrey   = palette{"#59636e", "#656c76"} // placeholder blocks; their symbol is grey
 )
 
 func (p palette) mode(m string) string {
@@ -483,10 +488,15 @@ type badge struct {
 
 // blockBadge is a split block (design B): label is the word in the bottom row
 // (drawn in colour), top the tag in the top row, fill the top row's colour.
+// The bottom text is drawn in SemiBold or, with botBold, in Bold, at botSize
+// on the baseline botBase.
 type blockBadge struct {
 	badge
-	top  string
-	fill func(mode string) string
+	top     string
+	fill    func(mode string) string
+	botBold bool
+	botSize float64
+	botBase float64
 }
 
 type group struct {
@@ -526,7 +536,12 @@ func buildGroups() []group {
 	}
 	// block is a split block: top is the tag ("SEV-1"), word the level's word.
 	block := func(grp, name, top, word string, text, fill palette) blockBadge {
-		return blockBadge{badge{grp, name, word, top + " " + word, fixedColour(text), false}, top, fixedColour(fill)}
+		return blockBadge{badge{grp, name, word, top + " " + word, fixedColour(text), false}, top, fixedColour(fill), false, blockBotSize, blockBotBase}
+	}
+	// placeholder is a grey split block for a rating that is not made: top is
+	// the tag ("SEV"), symbol "?" or "!", title says what it means.
+	placeholder := func(grp, name, top, symbol, title string) blockBadge {
+		return blockBadge{badge{grp, name, symbol, title, fixedColour(grey), false}, top, fixedColour(blockGrey), true, blockSymbolSize, blockSymbolBase}
 	}
 	var conf []badge
 	// 5% steps: finer steps are not readable apart, and callers round to the
@@ -584,6 +599,18 @@ func buildGroups() []group {
 				block("cr-block", "cr-1-high", "CR-1", "High", red, blockRed),
 				block("cr-block", "cr-2-medium", "CR-2", "Medium", yellow, blockYellow),
 				block("cr-block", "cr-3-low", "CR-3", "Low", blue, blockBlue),
+			}},
+		{name: "sev-placeholder", heading: "Severity placeholder, split block",
+			about: "Design B, split block: shown instead of a Severity level while the rating is not made (`?`) or failed (`!`). The tag sits in a grey top row without a level number; the symbol is Bold.",
+			blocks: []blockBadge{
+				placeholder("sev-placeholder", "unrated", "SEV", "?", "SEV not rated"),
+				placeholder("sev-placeholder", "failed", "SEV", "!", "SEV rating failed"),
+			}},
+		{name: "cr-placeholder", heading: "Change Risk placeholder, split block",
+			about: "Design B, split block: shown instead of a Change Risk level while the rating is not made (`?`) or failed (`!`). The tag sits in a grey top row without a level number; the symbol is Bold.",
+			blocks: []blockBadge{
+				placeholder("cr-placeholder", "unrated", "CR", "?", "CR not rated"),
+				placeholder("cr-placeholder", "failed", "CR", "!", "CR rating failed"),
 			}},
 		{name: "status", heading: "Status", about: "Lifecycle of a finding.",
 			badges: []badge{
@@ -647,8 +674,8 @@ func confidenceSlots(extra ...string) []slot {
 // usageSpecs is the one table of usage paths. Only slots a user emits today;
 // a new meaning is a new slot here plus a change in the user.
 var usageSpecs = []usageSpec{
-	{"triage/comment/severity", []slot{{"high", "sev-block/sev-1-high"}, {"medium", "sev-block/sev-2-medium"}, {"low", "sev-block/sev-3-low"}}},
-	{"triage/comment/risk", []slot{{"high", "cr-block/cr-1-high"}, {"medium", "cr-block/cr-2-medium"}, {"low", "cr-block/cr-3-low"}}},
+	{"triage/comment/severity", []slot{{"high", "sev-block/sev-1-high"}, {"medium", "sev-block/sev-2-medium"}, {"low", "sev-block/sev-3-low"}, {"unrated", "sev-placeholder/unrated"}, {"failed", "sev-placeholder/failed"}}},
+	{"triage/comment/risk", []slot{{"high", "cr-block/cr-1-high"}, {"medium", "cr-block/cr-2-medium"}, {"low", "cr-block/cr-3-low"}, {"unrated", "cr-placeholder/unrated"}, {"failed", "cr-placeholder/failed"}}},
 	{"triage/dashboard/severity", []slot{{"high", "sev-block/sev-1-high"}, {"medium", "sev-block/sev-2-medium"}, {"low", "sev-block/sev-3-low"}}},
 	{"triage/dashboard/confidence", confidenceSlots("na", "rule")},
 	{"review/findings/severity", sameAs("severity", "high", "medium", "low")},
@@ -712,13 +739,17 @@ func renderSVG(ft *sfnt.Font, b badge, mode string, width int, fill string) (str
 // renderBlock returns one split block (design B) for a mode: the top row
 // filled with the tag in white (bold), the whole block outlined, the word in
 // the bottom row (semibold). Both texts are centred horizontally on their ink
-// box and sit on the fixed baselines blockTopBase and blockBotBase.
+// box and sit on the fixed baselines blockTopBase and b.botBase.
 func renderBlock(semi, bold *sfnt.Font, b blockBadge, mode string) (string, error) {
 	top, err := layout(bold, b.top, blockTopSize, blockTopTrack)
 	if err != nil {
 		return "", err
 	}
-	bot, err := layout(semi, b.label, blockBotSize, tracking)
+	botFont := semi
+	if b.botBold {
+		botFont = bold
+	}
+	bot, err := layout(botFont, b.label, b.botSize, tracking)
 	if err != nil {
 		return "", err
 	}
@@ -732,7 +763,7 @@ func renderBlock(semi, bold *sfnt.Font, b blockBadge, mode string) (string, erro
 	fmt.Fprintf(&sb, `  <path d="M0 5A5 5 0 0 1 5 0H%dA5 5 0 0 1 %d 5V16H0Z" fill="%s"/>`+"\n", blockW-5, blockW, fill)
 	fmt.Fprintf(&sb, `  <rect x=".5" y=".5" width="%d" height="%d" rx="4.5" fill="none" stroke="%s"/>`+"\n", blockW-1, blockH-1, fill)
 	fmt.Fprintf(&sb, `  <path fill="%s" d="%s"/>`+"\n", white, top.pathData(mid-(top.minX+top.maxX)/2, blockTopBase))
-	fmt.Fprintf(&sb, `  <path fill="%s" d="%s"/>`+"\n", b.colour(mode), bot.pathData(mid-(bot.minX+bot.maxX)/2, blockBotBase))
+	fmt.Fprintf(&sb, `  <path fill="%s" d="%s"/>`+"\n", b.colour(mode), bot.pathData(mid-(bot.minX+bot.maxX)/2, b.botBase))
 	sb.WriteString("</svg>\n")
 	return sb.String(), nil
 }

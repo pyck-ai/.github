@@ -37,6 +37,7 @@ The files are copies of the designs below, written by the generator; the content
 |---|---|---|
 | `triage/comment/severity/` | `high`, `medium`, `low`, `unrated`, `failed` | `sev-block/sev-1-high`, `sev-block/sev-2-medium`, `sev-block/sev-3-low`, `sev-placeholder/unrated`, `sev-placeholder/failed` |
 | `triage/comment/risk/` | `high`, `medium`, `low`, `unrated`, `failed` | `cr-block/cr-1-high`, `cr-block/cr-2-medium`, `cr-block/cr-3-low`, `cr-placeholder/unrated`, `cr-placeholder/failed` |
+| `triage/comment/labels/` | `unrated`, `failed` | `lbl-placeholder/<slot>` |
 | `triage/dashboard/severity/` | `high`, `medium`, `low` | `sev-block/sev-1-high`, `sev-block/sev-2-medium`, `sev-block/sev-3-low` |
 | `triage/dashboard/confidence/` | `0`, `5`, ..., `100`, `na`, `rule` | `confidence/<slot>` |
 | `review/findings/severity/` | `high`, `medium`, `low` | `severity/<slot>` |
@@ -124,6 +125,15 @@ Design B, split block: shown instead of a Change Risk level while the rating is 
 |---|---|---|
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./cr-placeholder/unrated-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./cr-placeholder/unrated-light.svg"><img alt="CR not rated" src="./cr-placeholder/unrated-light.svg" width="52" height="32" align="texttop"></picture> | `cr-placeholder/unrated` | CR not rated |
 | <picture><source media="(prefers-color-scheme: dark)" srcset="./cr-placeholder/failed-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./cr-placeholder/failed-light.svg"><img alt="CR rating failed" src="./cr-placeholder/failed-light.svg" width="52" height="32" align="texttop"></picture> | `cr-placeholder/failed` | CR rating failed |
+
+## Labels placeholder, split block
+
+Design B, split block: shown in the Labels row of a triage comment while the labels are not added (`?`) or the rating failed (`!`). The labels triage has no level, so it has only these two. The symbol is Bold. Width 52, height 32.
+
+| Badge | Path (without `-<mode>.svg`) | Title |
+|---|---|---|
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./lbl-placeholder/unrated-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./lbl-placeholder/unrated-light.svg"><img alt="LBL not rated" src="./lbl-placeholder/unrated-light.svg" width="52" height="32" align="texttop"></picture> | `lbl-placeholder/unrated` | LBL not rated |
+| <picture><source media="(prefers-color-scheme: dark)" srcset="./lbl-placeholder/failed-dark.svg"><source media="(prefers-color-scheme: light)" srcset="./lbl-placeholder/failed-light.svg"><img alt="LBL rating failed" src="./lbl-placeholder/failed-light.svg" width="52" height="32" align="texttop"></picture> | `lbl-placeholder/failed` | LBL rating failed |
 
 ## Status
 

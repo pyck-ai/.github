@@ -612,6 +612,12 @@ func buildGroups() []group {
 				placeholder("cr-placeholder", "unrated", "CR", "?", "CR not rated"),
 				placeholder("cr-placeholder", "failed", "CR", "!", "CR rating failed"),
 			}},
+		{name: "lbl-placeholder", heading: "Labels placeholder, split block",
+			about: "Design B, split block: shown in the Labels row of a triage comment while the labels are not added (`?`) or the rating failed (`!`). The labels triage has no level, so it has only these two. The symbol is Bold.",
+			blocks: []blockBadge{
+				placeholder("lbl-placeholder", "unrated", "LBL", "?", "LBL not rated"),
+				placeholder("lbl-placeholder", "failed", "LBL", "!", "LBL rating failed"),
+			}},
 		{name: "status", heading: "Status", about: "Lifecycle of a finding.",
 			badges: []badge{
 				simple("status", "Status: ", "fixed", "Fixed", green),
@@ -676,6 +682,7 @@ func confidenceSlots(extra ...string) []slot {
 var usageSpecs = []usageSpec{
 	{"triage/comment/severity", []slot{{"high", "sev-block/sev-1-high"}, {"medium", "sev-block/sev-2-medium"}, {"low", "sev-block/sev-3-low"}, {"unrated", "sev-placeholder/unrated"}, {"failed", "sev-placeholder/failed"}}},
 	{"triage/comment/risk", []slot{{"high", "cr-block/cr-1-high"}, {"medium", "cr-block/cr-2-medium"}, {"low", "cr-block/cr-3-low"}, {"unrated", "cr-placeholder/unrated"}, {"failed", "cr-placeholder/failed"}}},
+	{"triage/comment/labels", []slot{{"unrated", "lbl-placeholder/unrated"}, {"failed", "lbl-placeholder/failed"}}},
 	{"triage/dashboard/severity", []slot{{"high", "sev-block/sev-1-high"}, {"medium", "sev-block/sev-2-medium"}, {"low", "sev-block/sev-3-low"}}},
 	{"triage/dashboard/confidence", confidenceSlots("na", "rule")},
 	{"review/findings/severity", sameAs("severity", "high", "medium", "low")},
